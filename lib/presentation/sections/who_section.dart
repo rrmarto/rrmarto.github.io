@@ -4,7 +4,7 @@ import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
 
 class WhoSection extends StatelessWidget {
-  WhoSection({required this.color});
+  const WhoSection({required this.color});
   final Color color;
   @override
   Widget build(BuildContext context) {

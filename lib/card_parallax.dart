@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 class CardParallax extends StatefulWidget {
@@ -66,7 +67,12 @@ class _CardParallaxState extends State<CardParallax> {
         height: widget.height,
         decoration: BoxDecoration(
           color: Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(getValueForScreenType<double>(
+            context: context,
+            mobile: 15,
+            tablet: 15,
+            desktop: 20,
+          )),
           boxShadow: const [
             BoxShadow(
                 offset: Offset(0, 50),
@@ -132,13 +138,29 @@ class _CardParallaxState extends State<CardParallax> {
           },
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(getValueForScreenType<double>(
+                context: context,
+                mobile: 15,
+                tablet: 15,
+                desktop: 20,
+              )),
               color: Colors.black,
-              border: const Border.fromBorderSide(
-                  BorderSide(color: Colors.black, width: 6)),
+              border: Border.fromBorderSide(BorderSide(
+                  color: Colors.black,
+                  width: getValueForScreenType<double>(
+                    context: context,
+                    mobile: 4,
+                    tablet: 4,
+                    desktop: 6,
+                  ))),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(getValueForScreenType<double>(
+                context: context,
+                mobile: 15,
+                tablet: 15,
+                desktop: 20,
+              )),
               child: Stack(
                 fit: StackFit.expand,
                 children: [

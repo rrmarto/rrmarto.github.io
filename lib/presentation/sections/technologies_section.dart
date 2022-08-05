@@ -36,41 +36,31 @@ class TechnologiesSection extends StatelessWidget {
             left: 10,
             bottom: 0, top: 0,
             // bottom: -height / 7,
-            child: Container(
-              height: height / 3 - 40,
-              width: height / 3 - 40,
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                  // gradient: LinearGradient(
-                  //     // colors: [HexColor.fromHex("12D8FA"), Colors.blueAccent]
-                  //     colors: [for (var color in colors.reversed) color]),
-                  shape: BoxShape.circle),
-              child: Center(
-                child: Container(
-                  height: height / 3 - 20,
-                  width: height / 3 - 20,
-                  decoration: BoxDecoration(
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //       offset: const Offset(0, 0),
-                      //       color: colors[0].withOpacity(0.5),
-                      //       blurRadius: 5,
-                      //       spreadRadius: 10)
-                      // ],
-                      gradient: LinearGradient(
-                          // colors: [HexColor.fromHex("12D8FA"), Colors.blueAccent]
-                          colors: [for (var color in colors) color]),
-                      shape: BoxShape.circle),
-                  child: Center(
-                    child: Text(
-                      "0$index",
-                      style: const TextStyle(
-                        fontSize: 150,
-                        color: Colors.white,
-                        fontFamily: 'Ways',
-                      ),
+            child: Center(
+              child: Container(
+                height: height / 3 - 20,
+                width: height / 3 - 20,
+                decoration: BoxDecoration(
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //       offset: const Offset(0, 0),
+                    //       color: colors[0].withOpacity(0.5),
+                    //       blurRadius: 5,
+                    //       spreadRadius: 10)
+                    // ],
+                    gradient: LinearGradient(
+                        // colors: [HexColor.fromHex("12D8FA"), Colors.blueAccent]
+                        colors: [for (var color in colors) color]),
+                    shape: BoxShape.circle),
+                child: Center(
+                  child: Text(
+                    "0$index",
+                    style: const TextStyle(
+                      fontSize: 150,
+                      color: Colors.white,
+                      fontFamily: 'Ways',
                     ),
-                  ),
+                  ).fit(),
                 ),
               ),
             ),

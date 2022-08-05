@@ -40,21 +40,27 @@ class HeaderSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: AnimatedOpacity(
-                      opacity: offsetHeader < height / 2 ? 1 : 0,
-                      duration: const Duration(milliseconds: 500),
-                      child: Text(
-                        "Roberto\nMarto\nRamirez".toUpperCase(),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontSize: 200,
-                            fontFamily: 'Ways',
-                            // fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ).shaderOnWidget(const LinearGradient(colors: [
-                        Colors.blue,
-                        Color.fromARGB(255, 205, 255, 231)
-                      ])),
+                    child: SizedBox(
+                      width: width - width / 3,
+                      height: height - height / 3,
+                      child: AnimatedOpacity(
+                        opacity: offsetHeader < height / 2 ? 1 : 0,
+                        duration: const Duration(milliseconds: 500),
+                        child: Text(
+                          "Roberto\nMarto\nRamirez".toUpperCase(),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontSize: 200,
+                              fontFamily: 'Ways',
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        )
+                            .shaderOnWidget(const LinearGradient(colors: [
+                              Colors.blue,
+                              Color.fromARGB(255, 205, 255, 231)
+                            ]))
+                            .fit(),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -67,16 +73,22 @@ class HeaderSection extends StatelessWidget {
                     child: AnimatedOpacity(
                       duration: const Duration(milliseconds: 700),
                       opacity: offsetHeader < height / 2 ? 1 : 0,
-                      child: const Text(
-                        "Mobile developer / Software Developer",
-                        style: TextStyle(
-                            fontSize: 50,
-                            // fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ).shaderOnWidget(const LinearGradient(colors: [
-                        Colors.blue,
-                        Color.fromARGB(255, 205, 255, 231)
-                      ])),
+                      child: SizedBox(
+                        width: width - width / 3,
+                        height: height / 6,
+                        child: const Text(
+                          "Mobile developer / Software Developer",
+                          style: TextStyle(
+                              fontSize: 50,
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        )
+                            .shaderOnWidget(const LinearGradient(colors: [
+                              Colors.blue,
+                              Color.fromARGB(255, 205, 255, 231)
+                            ]))
+                            .fit(),
+                      ),
                     ),
                   ),
                 ],
@@ -92,20 +104,21 @@ class HeaderSection extends StatelessWidget {
                     angle: 0.3,
                     child: Container(
                       padding: const EdgeInsets.all(20),
-                      height: height / 4,
+                      height: width / 8,
+                      width: width / 4,
                       // width: height / 2,
                       decoration: BoxDecoration(
                           // color: Colors.yellow,
                           border: Border.all(color: Colors.yellow, width: 15),
                           borderRadius: BorderRadius.circular(10)),
-                      child: const Center(
-                        child: Text(
+                      child: Center(
+                        child: const Text(
                           "Portfolio",
                           style: TextStyle(
                               color: Colors.yellow,
                               fontSize: 60,
                               fontFamily: 'Ways'),
-                        ),
+                        ).fit(),
                       ),
                     ),
                   ),

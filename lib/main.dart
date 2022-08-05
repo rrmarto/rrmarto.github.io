@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/presentation/my_apps.dart';
+import 'package:portfolio/presentation/providers/responsive_breakpoints_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 // Import transparent_image in pubspec.yaml file
 
 void main() {
-  runApp(MyPortfolio());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+          create: (context) => ResponsiveBreakPointsProvider()),
+    ],
+    child: MyPortfolio(),
+  ));
 }
 
 class MyPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Portfolio',
+      title: 'Roberto Marto | Portfolio',
       home: Scaffold(
           backgroundColor: Colors.black,
           body: Stack(

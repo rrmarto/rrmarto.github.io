@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/test_cube.dart';
+import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
 
 class WhereSection extends StatelessWidget {
@@ -9,6 +10,7 @@ class WhereSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
 
     return SizedBox(
       // color: color,
@@ -28,12 +30,15 @@ class WhereSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
-                      child: Text(
-                    "Where?".toUpperCase(),
-                    style: const TextStyle(
-                        color: Colors.yellow,
-                        fontSize: 200,
-                        fontWeight: FontWeight.bold),
+                      child: SizedBox(
+                    width: width - width / 3,
+                    child: Text(
+                      "Where?".toUpperCase(),
+                      style: const TextStyle(
+                          color: Colors.yellow,
+                          fontSize: 200,
+                          fontWeight: FontWeight.bold),
+                    ).fit(),
                   )),
                 ],
               ),
