@@ -43,18 +43,17 @@ final List<AppsModel> myapps = [
       storeUrls: []),
   AppsModel(
       name: "Yoel Fashion Boutique",
-      headline:
-          "",
+      headline: "",
       description:
           "Aplicación diseñada para gestionar las actividades físicas-recreativas en campamento Newmont - Cerro Negro.",
       icon: "icon",
       offset: 0.0,
       images: [
         "yf7.gif",
-        "yf3.png",
-        "yf4.png",
-        "yf1.png",
-        "yf2.png"
+        "yf3.PNG",
+        "yf4.PNG",
+        "yf1.PNG",
+        "yf2.PNG"
       ],
       technologies: """Flutter ApiRest Firebase Twilio Stripe CI/CD Git""",
       colors: [
@@ -73,11 +72,11 @@ final List<AppsModel> myapps = [
       icon: "icon",
       offset: 0.0,
       images: [
-        "eu3.png",
-        "eu2.png",
+        "eu3.PNG",
+        "eu2.PNG",
         "eu4.png",
-        "eu1.png",
-        "eu5.png"
+        "eu1.PNG",
+        "eu5.PNG"
       ],
       technologies: """Flutter ApiRest LiveStreaming Stripe CI/CD Git""",
       colors: [
