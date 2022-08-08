@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/zoom_widget_out.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class HeaderSection extends StatelessWidget {
   final double offsetHeader;
-  const HeaderSection({Key? key, required this.offsetHeader}) : super(key: key);
+  final SizingInformation dimensions;
+  const HeaderSection(
+      {Key? key, required this.offsetHeader, required this.dimensions})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +99,12 @@ class HeaderSection extends StatelessWidget {
               ),
             ),
             Positioned(
-                top: 170,
+                top: getValueForScreenType<double>(
+                  context: context,
+                  mobile: height / 2.5,
+                  tablet: height / 3,
+                  desktop: 170,
+                ),
                 left: width / 8,
                 child: ZoomWidgetOut(
                   from: 10,
@@ -103,20 +112,42 @@ class HeaderSection extends StatelessWidget {
                   child: Transform.rotate(
                     angle: 0.3,
                     child: Container(
-                      padding: const EdgeInsets.all(20),
+                      padding: EdgeInsets.all(getValueForScreenType<double>(
+                        context: context,
+                        mobile: 2,
+                        tablet: 20,
+                        desktop: 20,
+                      )),
                       height: width / 8,
-                      width: width / 4,
+                      width: getValueForScreenType<double>(
+                        context: context,
+                        mobile: width / 2,
+                        tablet: width / 4,
+                        desktop: width / 4,
+                      ),
                       // width: height / 2,
                       decoration: BoxDecoration(
                           // color: Colors.yellow,
-                          border: Border.all(color: Colors.yellow, width: 15),
+                          border: Border.all(
+                              color: Colors.yellow,
+                              width: getValueForScreenType<double>(
+                                context: context,
+                                mobile: 5,
+                                tablet: 15,
+                                desktop: 15,
+                              )),
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
-                        child: const Text(
+                        child: Text(
                           "Portfolio",
                           style: TextStyle(
                               color: Colors.yellow,
-                              fontSize: 60,
+                              fontSize: getValueForScreenType<double>(
+                                context: context,
+                                mobile: 20,
+                                tablet: 20,
+                                desktop: 60,
+                              ),
                               fontFamily: 'Ways'),
                         ).fit(),
                       ),

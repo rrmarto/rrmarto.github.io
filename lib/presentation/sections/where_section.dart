@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/test_cube.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class WhereSection extends StatelessWidget {
   final Color color;
-  const WhereSection({Key? key, required this.color}) : super(key: key);
+  final SizingInformation dimensions;
+  const WhereSection({Key? key, required this.color, required this.dimensions})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +56,22 @@ class WhereSection extends StatelessWidget {
                     for (var contact in contacts)
                       Image.asset(
                         "assets/images/contact/$contact",
-                        height: 60,
-                        width: 60,
+                        height: getValueForScreenType<double>(
+                          context: context,
+                          mobile: 30,
+                          tablet: 60,
+                          desktop: 60,
+                        ),
+                        // width: 60,
                       ),
-                    const Center(child: TestCube(size: 100))
+                    Center(
+                        child: TestCube(
+                            size: getValueForScreenType<double>(
+                      context: context,
+                      mobile: 40,
+                      tablet: 40,
+                      desktop: 100,
+                    )))
                   ],
                 ),
               ),

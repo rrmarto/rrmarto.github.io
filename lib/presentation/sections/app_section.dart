@@ -6,13 +6,14 @@ import 'package:portfolio/utils/enums.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class AppSection extends StatelessWidget {
   late double height;
   late double width;
-  late List<Color> colors;
   late AppsModel app;
   late bool isPhone;
+  final SizingInformation dimensions;
   double offset;
 
   AppSection(
@@ -21,8 +22,8 @@ class AppSection extends StatelessWidget {
       required this.offset,
       required this.height,
       required this.width,
-      required this.colors,
-      required this.isPhone})
+      required this.isPhone,
+      required this.dimensions})
       : super(key: key);
 
   @override
@@ -38,13 +39,13 @@ class AppSection extends StatelessWidget {
           gradient: LinearGradient(
         begin: Alignment.centerLeft,
         end: Alignment.centerRight,
-        colors: [for (var color in colors) color],
+        colors: [for (var color in app.colors) color],
       )),
       child: Stack(children: [
-        breakPoint != BreakPoint.mobile
+       ! dimensions.isMobile
             ? Container(
                 padding: const EdgeInsets.all(20),
-                width: width > 400 ? width / 2 : width - 20,
+                width: width / 2 ,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -43,7 +43,7 @@ class PhoneWidget extends StatelessWidget {
   SizedBox _mobile() {
     return SizedBox(
       height: height,
-      width: width / 2.5,
+      width: width / 2,
       child: Align(
           child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -52,10 +52,10 @@ class PhoneWidget extends StatelessWidget {
           // clipRRectBig,
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              height: height / 3,
+              height: height / 2.5,
               width: width / 2,
               child: CardParallax(
-                height: height / 3,
+                height: height / 2.5,
                 width: width / 2,
                 image: image,
               ))
@@ -76,10 +76,10 @@ class PhoneWidget extends StatelessWidget {
           // clipRRectBig,
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              height: height / 2+20,
+              height: height / 2 + 20,
               width: 230,
               child: CardParallax(
-                height: height / 2+20,
+                height: height / 2 + 20,
                 width: 230,
                 image: image,
               ))

@@ -8,9 +8,12 @@ import 'package:portfolio/utils/enums.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/fade_out.dart';
 import 'package:portfolio/utils/utils.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class MenuSection extends StatefulWidget {
-  const MenuSection({Key? key}) : super(key: key);
+  final SizingInformation dimensions;
+
+  const MenuSection({Key? key,required this.dimensions}) : super(key: key);
 
   @override
   State<MenuSection> createState() => _MenuSectionState();
@@ -249,17 +252,25 @@ class _MenuSectionState extends State<MenuSection>
       case Sections.initial:
         return const SizedBox();
       case Sections.home:
-        return const HeaderSection(
+        return  HeaderSection(
           offsetHeader: 0,
+          dimensions: widget.dimensions,
         );
       case Sections.who:
         return WhoSection(
           color: Colors.black,
+          dimensions: widget.dimensions,
         );
       case Sections.what:
-        return const WhatSection(color: Colors.black);
+        return  WhatSection(color: Colors.black,
+          dimensions: widget.dimensions,
+        
+        );
       case Sections.where:
-        return const WhereSection(color: Colors.black);
+        return  WhereSection(color: Colors.black,
+          dimensions: widget.dimensions,
+        
+        );
       default:
     }
   }

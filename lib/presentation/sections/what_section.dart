@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/extensions.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class WhatSection extends StatelessWidget {
   final Color color;
+  final SizingInformation dimensions;
   const WhatSection({
     Key? key,
-    required this.color,
+    required this.color, required this.dimensions,
   }) : super(key: key);
 
   @override
@@ -17,30 +19,29 @@ class WhatSection extends StatelessWidget {
       // color: color,
       height: height,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
+          SizedBox(
+            height: height / 3,
+          ),
           // Text(
           //   'Mi nombres',
           //   style: descriptionStyle!.copyWith(color: Colors.white),
           // ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                  child: SizedBox(
-                // height: height,
-                width: width - width / 3,
-                child: Text(
-                  "What?".toUpperCase(),
-                  style: const TextStyle(
-                      color: Colors.yellow,
-                      fontSize: 300,
-                      fontWeight: FontWeight.bold),
-                ).fit(),
-              )),
-            ],
-          ),
+          Center(
+              child: SizedBox(
+            // height: height,
+            width: width - width / 3,
+            child: Text(
+              "What?".toUpperCase(),
+              style: const TextStyle(
+                  color: Colors.yellow,
+                  fontSize: 300,
+                  fontWeight: FontWeight.bold),
+            ).fit(),
+          )),
           Expanded(
             child: Container(
               width: MediaQuery.of(context).size.width,
@@ -69,7 +70,7 @@ class WhatSection extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 20),
+          // const SizedBox(height: 20),
         ],
       ),
     );

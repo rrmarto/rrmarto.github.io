@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/providers/responsive_breakpoints_provider.dart';
 import 'package:portfolio/presentation/sections/app_section.dart';
 import 'package:portfolio/presentation/sections/header_section.dart';
 import 'package:portfolio/presentation/sections/menu_section.dart';
@@ -8,9 +7,7 @@ import 'package:portfolio/presentation/sections/technologies_section.dart';
 import 'package:portfolio/presentation/sections/what_section.dart';
 import 'package:portfolio/presentation/sections/where_section.dart';
 import 'package:portfolio/presentation/sections/who_section.dart';
-import 'package:portfolio/utils/enums.dart';
 import 'package:portfolio/utils/utils.dart';
-import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:rive/rive.dart' as rive;
 
@@ -44,7 +41,7 @@ class _HomePageState extends State<HomePage>
   List<String> name = "Roberto Marto Ramirez".split("");
   String current = "";
   var height;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -68,38 +65,42 @@ class _HomePageState extends State<HomePage>
     return AnimatedBuilder(
         animation: _rotationValue,
         builder: (context, _) {
-          return Scaffold(
-            key: _scaffoldKey,
-            drawer: const MenuSection(),
-            backgroundColor: Colors.transparent,
-            extendBodyBehindAppBar: true,
-            body: ResponsiveBuilder(builder: (context, sizingInformation) {
-              if (sizingInformation.isDesktop) {
-                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                  context
-                      .read<ResponsiveBreakPointsProvider>()
-                      .setBreakpoint(BreakPoint.desktop);
-                });
-              }
-              // If width it less then 1100 and more then 650 we consider it as tablet
-              else if (sizingInformation.isTablet) {
-                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                  context
-                      .read<ResponsiveBreakPointsProvider>()
-                      .setBreakpoint(BreakPoint.tablet);
-                });
-              }
-              // Or less then that we called it mobile
-              else {
-                print("Is mobileee");
-                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                  context
-                      .read<ResponsiveBreakPointsProvider>()
-                      .setBreakpoint(BreakPoint.mobile);
-                });
-              }
+          return ResponsiveBuilder(builder: (context, sizingInformation) {
+            return Scaffold(
+              key: _scaffoldKey,
+              drawer: MenuSection(
+                dimensions: sizingInformation,
+              ),
+              backgroundColor: Colors.transparent,
+              extendBodyBehindAppBar: true,
+              body:
+                  //  SizingInformation dimensions = sizingInformation;
+                  // if (sizingInformation.isDesktop) {
+                  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  //     context
+                  //         .read<ResponsiveBreakPointsProvider>()
+                  //         .setBreakpoint(BreakPoint.desktop);
+                  //   });
+                  // }
+                  // // If width it less then 1100 and more then 650 we consider it as tablet
+                  // else if (sizingInformation.isTablet) {
+                  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  //     context
+                  //         .read<ResponsiveBreakPointsProvider>()
+                  //         .setBreakpoint(BreakPoint.tablet);
+                  //   });
+                  // }
+                  // // Or less then that we called it mobile
+                  // else {
+                  //   print("Is mobileee");
+                  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  //     context
+                  //         .read<ResponsiveBreakPointsProvider>()
+                  //         .setBreakpoint(BreakPoint.mobile);
+                  //   });
+                  // }
 
-              return NestedScrollView(
+                  NestedScrollView(
                 headerSliverBuilder: (context, innerBoxIsScrolled) {
                   return [
                     // const SliverAppBar(
@@ -142,7 +143,9 @@ class _HomePageState extends State<HomePage>
                           // ),
                           ListView(
                             children: [
-                              HeaderSection(offsetHeader: offsetHeader),
+                              HeaderSection(
+                                  offsetHeader: offsetHeader,
+                                  dimensions: sizingInformation),
                               // SizedBox(
                               //   height: 100,
                               //   child: ListView(
@@ -176,11 +179,11 @@ class _HomePageState extends State<HomePage>
                               //   ),
                               // ),
                               WhoSection(
-                                color: Colors.black,
-                              ),
-                              const WhatSection(
-                                color: Colors.black,
-                              ),
+                                  color: Colors.black,
+                                  dimensions: sizingInformation),
+                              WhatSection(
+                                  color: Colors.black,
+                                  dimensions: sizingInformation),
 
                               // _header(descriptionStyle, width, height,
                               //     Colors.black),
@@ -222,13 +225,14 @@ class _HomePageState extends State<HomePage>
                                           TechnologiesSection(
                                               index: i + 1,
                                               colors: myapps[i].colors,
-                                              app: myapps[i].technologies),
+                                              dimensions: sizingInformation,
+                                              app: myapps[i]),
                                           AppSection(
                                               app: myapps[i],
                                               offset: sectionsOffset[i]!,
                                               height: height,
                                               width: width,
-                                              colors: myapps[i].colors,
+                                              dimensions: sizingInformation,
                                               isPhone: false),
                                         },
                                         // Container(
@@ -444,8 +448,9 @@ class _HomePageState extends State<HomePage>
                                         //     width: width,
                                         //     colors: myapps[0].colors,
                                         //     isPhone: false),
-                                        const WhereSection(
+                                        WhereSection(
                                           color: Colors.black,
+                                          dimensions: sizingInformation,
                                         )
                                       ],
                                     ),
@@ -561,9 +566,9 @@ class _HomePageState extends State<HomePage>
                     ),
                   ),
                 ),
-              );
-            }),
-          );
+              ),
+            );
+          });
         });
   }
 
