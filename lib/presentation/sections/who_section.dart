@@ -14,9 +14,9 @@ class WhoSection extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
 
-    return dimensions.isMobile
-        ? _mobile(height, context)
-        : _desktop(height, context);
+    return dimensions.isDesktop
+        ? _desktop(height, context)
+        : _mobile(height, context);
   }
 
   SizedBox _desktop(double height, BuildContext context) {

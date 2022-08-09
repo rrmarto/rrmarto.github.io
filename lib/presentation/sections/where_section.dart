@@ -3,6 +3,7 @@ import 'package:portfolio/test_cube.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WhereSection extends StatelessWidget {
   final Color color;
@@ -54,15 +55,20 @@ class WhereSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     for (var contact in contacts)
-                      Image.asset(
-                        "assets/images/contact/$contact",
-                        height: getValueForScreenType<double>(
-                          context: context,
-                          mobile: 30,
-                          tablet: 60,
-                          desktop: 60,
+                      InkWell(
+                        onTap: () {
+                          launchUrl(Uri.parse(contact.url));
+                        },
+                        child: Image.asset(
+                          "assets/images/contact/${contact.image}",
+                          height: getValueForScreenType<double>(
+                            context: context,
+                            mobile: 30,
+                            tablet: 60,
+                            desktop: 60,
+                          ),
+                          // width: 60,
                         ),
-                        // width: 60,
                       ),
                     Center(
                         child: TestCube(
@@ -73,12 +79,19 @@ class WhereSection extends StatelessWidget {
                       desktop: 100,
                     )))
                   ],
-                ),
+                ).shaderOnWidget(const LinearGradient(
+                    colors: [Colors.blue, Color.fromARGB(255, 205, 255, 231)])),
               ),
 
               const SizedBox(height: 20),
             ],
           )),
     );
+  }
+
+  Future<void> _launchUrl(url) async {
+    if (!await launchUrl(url)) {
+      throw 'Could not launch $url';
+    }
   }
 }

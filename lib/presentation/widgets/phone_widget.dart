@@ -53,10 +53,10 @@ class PhoneWidget extends StatelessWidget {
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               height: height / 2.5,
-              width: width / 2,
+              width: height / 4,
               child: CardParallax(
                 height: height / 2.5,
-                width: width / 2,
+                width: height / 4,
                 image: image,
               ))
         ],
@@ -101,10 +101,10 @@ class PhoneWidget extends StatelessWidget {
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               height: height / 2,
-              width: 230,
+              width: height / 4,
               child: CardParallax(
                 height: height / 2,
-                width: 230,
+                width: height / 4,
                 image: image,
               ))
         ],

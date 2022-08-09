@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/domain/entities/apps_model.dart';
+import 'package:portfolio/domain/entities/contact_model.dart';
 import 'package:portfolio/utils/extensions.dart';
 
 final Map<String, String> myInfo = {
@@ -74,7 +75,7 @@ final List<AppsModel> myapps = [
       images: [
         "eu3.PNG",
         "eu2.PNG",
-        "eu4.png",
+        "eu4.PNG",
         "eu1.PNG",
         "eu5.PNG"
       ],
@@ -133,12 +134,14 @@ final List<String> techIcons = [
   "html.png"
 ];
 
-final List<String> contacts = [
+final List<ContactModel> contacts = [
   // "twitter.png",
-  "github.png",
-  "instagram.png",
-  "email.png",
-  "linkedin.png",
+  ContactModel(image: "github.png", url: "https://github.com/rrmarto"),
+  ContactModel(
+      image: "instagram.png", url: "https://www.instagram.com/rrmarto/"),
+  ContactModel(image: "email.png", url: "mailto:rrmarto89@gmail.com"),
+  ContactModel(
+      image: "linkedin.png", url: "https://www.linkedin.com/in/rrmarto/"),
 ];
 
 final List<String> moonlist = [

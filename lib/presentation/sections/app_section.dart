@@ -42,10 +42,10 @@ class AppSection extends StatelessWidget {
         colors: [for (var color in app.colors) color],
       )),
       child: Stack(children: [
-       ! dimensions.isMobile
+        dimensions.isDesktop
             ? Container(
                 padding: const EdgeInsets.all(20),
-                width: width / 2 ,
+                width: width / 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
