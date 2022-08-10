@@ -9,7 +9,8 @@ final Map<String, String> myInfo = {
       Capacity to analyze user requirements and translate customer needs into application design.
                         """,
   "skills":
-      """Flutter | Swift | Android | Java | Spring Boot | Git | Firebase | AWS | Stripe | Twilio | Rest API | GraphQL | Google Maps | MapBox | Docker 
+      """Flutter | Swift | Android | Java | Spring Boot | Git | Firebase | AWS |
+      | Stripe | Twilio | Rest API | GraphQL | Google Maps | MapBox | Docker |
                           """,
   "training": """Advanced Mobile Development, 2015, Cuba.
 Advanced management in GNU/Linux, 2014, Cuba.

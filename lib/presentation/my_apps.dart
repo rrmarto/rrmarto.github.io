@@ -45,7 +45,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 400));
@@ -62,10 +61,7 @@ class _HomePageState extends State<HomePage>
     final width = MediaQuery.of(context).size.width;
     final nameStyle = Theme.of(context).textTheme.headline2;
     final descriptionStyle = Theme.of(context).textTheme.headline4;
-    return AnimatedBuilder(
-        animation: _rotationValue,
-        builder: (context, _) {
-          return ResponsiveBuilder(builder: (context, sizingInformation) {
+    return ResponsiveBuilder(builder: (context, sizingInformation) {
             return Scaffold(
               key: _scaffoldKey,
               drawer: MenuSection(
@@ -73,49 +69,19 @@ class _HomePageState extends State<HomePage>
               ),
               backgroundColor: Colors.transparent,
               extendBodyBehindAppBar: true,
-              body:
-                  //  SizingInformation dimensions = sizingInformation;
-                  // if (sizingInformation.isDesktop) {
-                  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                  //     context
-                  //         .read<ResponsiveBreakPointsProvider>()
-                  //         .setBreakpoint(BreakPoint.desktop);
-                  //   });
-                  // }
-                  // // If width it less then 1100 and more then 650 we consider it as tablet
-                  // else if (sizingInformation.isTablet) {
-                  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                  //     context
-                  //         .read<ResponsiveBreakPointsProvider>()
-                  //         .setBreakpoint(BreakPoint.tablet);
-                  //   });
-                  // }
-                  // // Or less then that we called it mobile
-                  // else {
-                  //   print("Is mobileee");
-                  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                  //     context
-                  //         .read<ResponsiveBreakPointsProvider>()
-                  //         .setBreakpoint(BreakPoint.mobile);
-                  //   });
-                  // }
-
-                  NestedScrollView(
+              body: NestedScrollView(
                 headerSliverBuilder: (context, innerBoxIsScrolled) {
                   return [
-                    // const SliverAppBar(
-                    //   backgroundColor: Colors.black,
-                    //   elevation: 0,
-                    //   title: Text("My protfolio"),
-                    //   floating: true,
-                    // )
+                    const SliverAppBar(
+                      backgroundColor: Colors.black,
+                      elevation: 0,
+                      title: Text("My protfolio"),
+                      floating: true,
+                    )
                   ];
                 },
                 body: NotificationListener<ScrollNotification>(
-                  // When user scrolls, this will trigger onNotification.
-                  // updateOffsetAccordingToScroll updates the offset
                   onNotification: updateOffsetAccordingToScroll,
-                  // ScrollConfiguration sets the scroll glow behaviour
                   child: ScrollConfiguration(
                     behavior: NoScrollGlow(),
                     child: MouseRegion(
@@ -123,7 +89,6 @@ class _HomePageState extends State<HomePage>
                           ? SystemMouseCursors.none
                           : SystemMouseCursors.basic,
                       onHover: ((event) {
-                        print(event.localPosition.dx);
                         setState(() {
                           dx = event.localPosition.dx;
                           dy = event.localPosition.dy;
@@ -131,93 +96,21 @@ class _HomePageState extends State<HomePage>
                       }),
                       child: Stack(
                         children: [
-                          // Positioned(
-                          //   right: 0,
-                          //   child: SizedBox(
-                          //     height: height,
-                          //     width: width / 2,
-                          //     child: const rive.RiveAnimation.asset(
-                          //       'assets/rive/beach_icon.riv',
-                          //     ),
-                          //   ),
-                          // ),
                           ListView(
                             children: [
                               HeaderSection(
                                   offsetHeader: offsetHeader,
                                   dimensions: sizingInformation),
-                              // SizedBox(
-                              //   height: 100,
-                              //   child: ListView(
-                              //     children: [
-                              //       MouseRegion(
-                              //         onEnter: (event) {
-                              //           print('entro');
-                              //           setState(() {
-                              //             animate = true;
-                              //           });
-                              //         },
-                              //         onExit: (event) {
-                              //           setState(() {
-                              //             animate = false;
-                              //           });
-                              //         },
-                              //         child: AnimatedContainer(
-                              //           height: 100,
-                              //           width: animate ? 120 : 60,
-                              //           duration:
-                              //               const Duration(milliseconds: 500),
-                              //           decoration: BoxDecoration(
-                              //               borderRadius:
-                              //                   BorderRadius.circular(20),
-                              //               image: const DecorationImage(
-                              //                   image: AssetImage(
-                              //                       "assets/images/coding.jpg"))),
-                              //         ),
-                              //       )
-                              //     ],
-                              //   ),
-                              // ),
                               WhoSection(
                                   color: Colors.black,
                                   dimensions: sizingInformation),
                               WhatSection(
                                   color: Colors.black,
                                   dimensions: sizingInformation),
-
-                              // _header(descriptionStyle, width, height,
-                              //     Colors.black),
                               Stack(
                                 children: <Widget>[
-                                  // Positioned(
-                                  //   // The hero image will be pushed up once user scrolls up
-                                  //   // That is why it is multiplied negatively.
-                                  //   top: -.25 * offset,
-                                  //   child: Container(
-                                  //     height: height,
-                                  //     width: width,
-                                  //     color: Colors.black,
-                                  //   ),
-                                  //   // child: Image.asset(
-                                  //   //   // From the transparent_image package
-                                  //   //   "assets/images/coding.JPG",
-                                  //   //   height: height,
-                                  //   //   width: width,
-                                  //   //   fit: BoxFit.cover,
-                                  //   // ),
-                                  // ),
-
-                                  // Positioned(
-                                  //   // top: -.25 * offset,
-                                  //   child: SizedBox(
-                                  //     height: height,
-                                  //     width: width,
-                                  //     child: _header(descriptionStyle, width),
-                                  //   ),
-                                  // ),
                                   SingleChildScrollView(
                                     child: Column(
-                                      // crossAxisAlignment: CrossAxisAlignment.end,
                                       children: <Widget>[
                                         for (int i = 0;
                                             i < myapps.length;
@@ -235,219 +128,6 @@ class _HomePageState extends State<HomePage>
                                               dimensions: sizingInformation,
                                               isPhone: false),
                                         },
-                                        // Container(
-                                        //   padding: const EdgeInsets.symmetric(
-                                        //       horizontal: 40, vertical: 20),
-                                        //   color: Colors.black,
-                                        //   height: height / 2,
-                                        //   child: Column(
-                                        //     children: [
-                                        //       const Text(
-                                        //         "Technologies Used",
-                                        //         style: TextStyle(
-                                        //             color: Colors.white,
-                                        //             fontSize: 30),
-                                        //       ),
-                                        //       Transform(
-                                        //         transform: Matrix4.identity()
-                                        //           ..setEntry(3, 2, 0.001)
-                                        //           // ..rotateX((0.3 * (dy / 50) + -0.3))
-                                        //           ..translate(
-                                        //               (-0.3 * (dx / 5) + 0.3)),
-                                        //         // (-0.3 * (dy / 5) + 0.3),
-                                        //         // (-0.3 * (dx / 5) + 0.3)),
-                                        //         // ..rotateY((-0.3 * (dx / 50) + 0.3)),
-                                        //         alignment:
-                                        //             FractionalOffset.center,
-                                        //         child: Center(
-                                        //           child: Text(
-                                        //             myapps[0]
-                                        //                 .technologies
-                                        //                 .toUpperCase(),
-                                        //             textAlign: TextAlign.center,
-                                        //             style: const TextStyle()
-                                        //                 .borderPaint(100,
-                                        //                     Colors.white60),
-                                        //           ),
-                                        //         ),
-                                        //       ),
-                                        //     ],
-                                        //   ).separatedColumn(40),
-                                        // ),
-                                        // _blueContainer4(
-                                        //     height,
-                                        //     width,
-                                        //     TextStyle(color: Colors.white),
-                                        //     TextStyle(),
-                                        //     BoxDecoration(color: Colors.blue),
-                                        //     "name",
-                                        //     myapps[0],
-                                        //     offset),
-                                        // Container(
-                                        //   padding: const EdgeInsets.symmetric(
-                                        //       horizontal: 40, vertical: 20),
-                                        //   color: Colors.black,
-                                        //   height: height / 2,
-                                        //   child: Column(
-                                        //     children: [
-                                        //       const Text(
-                                        //         "Technologies Used",
-                                        //         style: TextStyle(
-                                        //             color: Colors.white,
-                                        //             fontSize: 30),
-                                        //       ),
-                                        //       Transform(
-                                        //         transform: Matrix4.identity()
-                                        //           ..setEntry(3, 2, 0.001)
-                                        //           // ..rotateX((0.3 * (dy / 50) + -0.3))
-                                        //           ..translate(
-                                        //               (-0.3 * (dx / 5) + 0.3)),
-                                        //         // (-0.3 * (dy / 5) + 0.3),
-                                        //         // (-0.3 * (dx / 5) + 0.3)),
-                                        //         // ..rotateY((-0.3 * (dx / 50) + 0.3)),
-                                        //         alignment:
-                                        //             FractionalOffset.center,
-                                        //         child: Center(
-                                        //           child: Text(
-                                        //             myapps[0]
-                                        //                 .technologies
-                                        //                 .toUpperCase(),
-                                        //             textAlign: TextAlign.center,
-                                        //             style: const TextStyle()
-                                        //                 .borderPaint(100,
-                                        //                     Colors.white60),
-                                        //           ),
-                                        //         ),
-                                        //       ),
-                                        //     ],
-                                        //   ).separatedColumn(40),
-                                        // ),
-                                        // _blueContainer4(
-                                        //     height,
-                                        //     width,
-                                        //     TextStyle(color: Colors.white),
-                                        //     TextStyle(),
-                                        //     BoxDecoration(color: Colors.blue),
-                                        //     "name",
-                                        //     myapps[0],
-                                        //     offset1),
-                                        // Container(
-                                        //   padding: const EdgeInsets.symmetric(
-                                        //       horizontal: 40, vertical: 20),
-                                        //   color: Colors.black,
-                                        //   height: height / 2,
-                                        //   child: Column(
-                                        //     children: [
-                                        //       const Text(
-                                        //         "Technologies Used",
-                                        //         style: TextStyle(
-                                        //             color: Colors.white,
-                                        //             fontSize: 30),
-                                        //       ),
-                                        //       Transform(
-                                        //         transform: Matrix4.identity()
-                                        //           ..setEntry(3, 2, 0.001)
-                                        //           // ..rotateX((0.3 * (dy / 50) + -0.3))
-                                        //           ..translate(
-                                        //               (-0.3 * (dx / 5) + 0.3)),
-                                        //         // (-0.3 * (dy / 5) + 0.3),
-                                        //         // (-0.3 * (dx / 5) + 0.3)),
-                                        //         // ..rotateY((-0.3 * (dx / 50) + 0.3)),
-                                        //         alignment:
-                                        //             FractionalOffset.center,
-                                        //         child: Center(
-                                        //           child: Text(
-                                        //             myapps[0]
-                                        //                 .technologies
-                                        //                 .toUpperCase(),
-                                        //             textAlign: TextAlign.center,
-                                        //             style: const TextStyle()
-                                        //                 .borderPaint(100,
-                                        //                     Colors.white60),
-                                        //           ),
-                                        //         ),
-                                        //       ),
-                                        //     ],
-                                        //   ).separatedColumn(40),
-                                        // ),
-                                        // _blueContainer4(
-                                        //     height,
-                                        //     width,
-                                        //     TextStyle(color: Colors.white),
-                                        //     TextStyle(),
-                                        //     BoxDecoration(color: Colors.blue),
-                                        //     "name",
-                                        //     myapps[0],
-                                        //     offset2),
-
-                                        // Container(
-                                        //   padding: const EdgeInsets.symmetric(
-                                        //       horizontal: 40, vertical: 20),
-                                        //   color: Colors.black,
-                                        //   height: height / 2,
-                                        //   child: Column(
-                                        //     children: [
-                                        //       const Text(
-                                        //         "Technologies Used",
-                                        //         style: TextStyle(
-                                        //             color: Colors.white,
-                                        //             fontSize: 30),
-                                        //       ),
-                                        //       Center(
-                                        //         child: Text(
-                                        //           "Flutter Swift Kotlin Java SpringBoot Scrum Git "
-                                        //               .toUpperCase(),
-                                        //           style: const TextStyle()
-                                        //               .borderPaint(
-                                        //                   100, Colors.white60),
-                                        //         ),
-                                        //       ),
-                                        //     ],
-                                        //   ).separatedColumn(40),
-                                        // ),
-                                        // AppSection(
-                                        //     app: myapps[0],
-                                        //     offset: offset1,
-                                        //     height: height,
-                                        //     width: width,
-                                        //     colors: myapps[0].colors,
-                                        //     isPhone: false),
-                                        // Container(
-                                        //   color: Colors.black,
-                                        //   height: height / 2,
-                                        //   child: const Center(
-                                        //     child: Text(
-                                        //       "Aplicaciones para probar el estado del sdk de flutter web en la vida real por lo q se hace un portfolio para comprobar su compatibiidad",
-                                        //       style: TextStyle(
-                                        //           color: Colors.white),
-                                        //     ),
-                                        //   ),
-                                        // ),
-                                        // // _blueContainer4(
-                                        // //     height,
-                                        // //     width,
-                                        // //     nameStyle,
-                                        // //     descriptionStyle,
-                                        // //     const BoxDecoration(
-
-                                        // //         // border: Border.fromBorderSide(
-                                        // //         //     BorderSide(color: Colors.black)),
-                                        // //         gradient: LinearGradient(
-                                        // //             begin: Alignment.topCenter,
-                                        // //             end: Alignment.bottomCenter,
-                                        // //             colors: [
-                                        // //           Colors.blueGrey,
-                                        // //           Colors.black
-                                        // //         ])),
-                                        // //     "Easy",
-                                        // //     offset2),
-                                        // AppSection(
-                                        //     app: myapps[0],
-                                        //     offset: offset2,
-                                        //     height: height,
-                                        //     width: width,
-                                        //     colors: myapps[0].colors,
-                                        //     isPhone: false),
                                         WhereSection(
                                           color: Colors.black,
                                           dimensions: sizingInformation,
@@ -459,61 +139,16 @@ class _HomePageState extends State<HomePage>
                               ),
                             ],
                           ),
-                          // Align(
-                          //   alignment: Alignment.centerRight,
-                          //   child: Stack(
-                          //     children: [
-                          //       for (int i = 0; i < moonlist.length; i++)
-                          //         _transformWidget(moonlist[i], i),
-                          //     ],
-                          //   ),
-                          // ),
-
                           AnimatedPositioned(
                             duration: duration,
                             curve: Curves.decelerate,
                             top: inMouseRegion ? dy : 40,
-                            // : offset > height * 5
-                            //     ? height - width / 5 - 20
-                            //     : 10,
                             left: inMouseRegion ? dx : 40,
-                            // : offset > height * 5
-                            //     ? width - width / 5 - 20
-                            //     : 10,
-                            // child: InkWell(
-                            // onTap: () {
-                            //   if (_controller.isCompleted) {
-                            //     _controller.reverse();
-                            //   } else {
-                            //     _controller.forward();
-                            //   }
-                            // },
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 100),
-                              // constraints: BoxConstraints(
-                              //     maxHeight: width / 10, maxWidth: width / 10),
                               curve: Curves.ease,
                               height: inMouseRegion ? 80 : 50,
-                              // : offset > height
-                              //     ? width / 5
-                              //     : 50,
                               width: inMouseRegion ? 80 : 50,
-                              // : offset > height
-                              //     ? width / 5
-                              //     : 50,
-
-                              // width: offset > height ? (5 * offset / 50) : 20,
-                              // decoration: BoxDecoration(
-                              //     color: inMouseRegion
-                              //         ? Colors.transparent
-                              //         : Colors.yellow,
-                              //     // : ((offset > height * 3)
-                              //     //         ? (offset > height * 5)
-                              //     //             ? Colors.indigo
-                              //     //             : Colors.blue
-                              //     //         : Colors.white)
-                              //     //     .withOpacity(0.4),
-                              //     borderRadius: BorderRadius.circular(20)),
                               child: Center(
                                 child: inMouseRegion
                                     ? const Icon(
@@ -523,11 +158,6 @@ class _HomePageState extends State<HomePage>
                                       )
                                     : IconButton(
                                         onPressed: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             const MenuSection()));
                                           _scaffoldKey.currentState!
                                               .openDrawer();
                                         },
@@ -535,32 +165,9 @@ class _HomePageState extends State<HomePage>
                                           Icons.menu,
                                           color: Colors.white,
                                         )),
-                                // : const TestCube(size: 50),
                               ),
-                              // child: AnimatedCrossFade(
-                              //     firstChild: const TestCube(size: 50),
-                              //     secondChild: const Icon(
-                              //       Icons.key,
-                              //       color: Colors.white,
-                              //       size: 40,
-                              //     ),
-                              //     crossFadeState: inMouseRegion
-                              //         ? CrossFadeState.showSecond
-                              //         : CrossFadeState.showFirst,
-                              //     duration: duration),
                             ),
-                            // ),
                           ),
-                          // if (offset > height * 3 && offset < height * 5) ...{
-                          //   Positioned(
-                          //       right: 50,
-                          //       top: 50,
-                          //       child: Image.asset(
-                          //         "assets/images/coding.JPG",
-                          //         height: 100,
-                          //         width: 100,
-                          //       ))
-                          // }
                         ],
                       ),
                     ),
@@ -569,7 +176,7 @@ class _HomePageState extends State<HomePage>
               ),
             );
           });
-        });
+        
   }
 
   _transformWidget(String image, int index, {bool fullSize = false}) {
@@ -651,144 +258,12 @@ class _HomePageState extends State<HomePage>
     );
   }
 
-  _header(
-      TextStyle? descriptionStyle, double width, double height, Color color) {
-    return Container(
-      color: color,
-      height: height,
-      child: Align(
-          alignment: const Alignment(0, 0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              // Text(
-              //   'Mi nombres',
-              //   style: descriptionStyle!.copyWith(color: Colors.white),
-              // ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                      child: Text(
-                    "Wh".toUpperCase(),
-                    style: const TextStyle(
-                        color: Colors.yellow,
-                        fontSize: 300,
-                        fontFamily: 'Agne',
-                        fontWeight: FontWeight.bold),
-                  )),
-                  // const SizedBox(
-                  //   height: 500,
-                  //   width: 500,
-                  //   child: Center(child: ExampleExpandableFab()),
-                  // ),
-                  Center(
-                      child: Text(
-                    "?".toUpperCase(),
-                    style: const TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 300,
-                        fontFamily: 'Agne',
-                        fontWeight: FontWeight.bold),
-                  )),
-                ],
-              ),
-              const Center(
-                child: Padding(
-                  padding: EdgeInsets.all(40.0),
-                  child: Text(
-                    """Computer Sciences Engineer (Havana, UCI, 2013), experienced in mobile development with a demonstrated history of working in the information technology and services industry. Strong engineering professional skilled in Java, Android, Flutter, Web development, Agile Methodologies and Relational Databases.
-""",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: [
-              //     for (int i = 0; i < 3; i++)
-              //       Container(
-              //         height: height / 4,
-              //         width: width / 3 - 20,
-              //         decoration: const BoxDecoration(color: Colors.indigo),
-              //       )
-              //   ],
-              // ),
-              // DefaultTextStyle(
-              //   style: descriptionStyle!.copyWith(color: Colors.white),
-              //   child: AnimatedTextKit(
-              //     pause: const Duration(milliseconds: 4000),
-              //     animatedTexts: [
-              //       TypewriterAnimatedText('Discipline is the best tool'),
-              //       TypewriterAnimatedText('Design first, then code'),
-              //       TypewriterAnimatedText(
-              //           'Do not patch bugs out, rewrite them'),
-              //       TypewriterAnimatedText(
-              //           'Do not test bugs out, design them out'),
-              //     ],
-              //     // onTap: () {
-              //     //   print("Tap Event");
-              //     // },
-              //   ),
-              // ),
-              const SizedBox(height: 20),
-              // Container(
-              //   height: 300,
-              //   width: width / 2,
-              //   child: ListView(
-              //     scrollDirection: Axis.horizontal,
-              //     children: [
-              //       for (var item in name)
-              //         InkWell(
-              //           onTap: () {
-              //             print("tocar");
-              //           },
-              //           onHover: ((value) {
-              //             if (value) {
-              //               print("Hover $item");
-              //               setState(() {
-              //                 current = item;
-              //               });
-              //             } else {
-              //               setState(() {
-              //                 current = "";
-              //               });
-              //             }
-              //           }),
-              //           child: AnimatedContainer(
-              //             curve: Curves.bounceIn,
-              //             height: 100,
-              //             duration: Duration(milliseconds: 500),
-              //             child: Center(
-              //               child: Text(
-              //                 item,
-              //                 style: TextStyle(
-              //                     fontSize: current == item ? 50 : 30,
-              //                     color: Colors.white),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //     ],
-              //   ),
-              // )
-            ],
-          )),
-    );
-  }
-
   setMouseRegion(bool hovered) {
     setState(() {
       inMouseRegion = hovered;
     });
   }
 
-  /// Returns true to cancel the notification bubbling.
   bool updateOffsetAccordingToScroll(ScrollNotification scrollNotification) {
     setState(() {
       offsetHeader = scrollNotification.metrics.pixels;
@@ -836,8 +311,6 @@ class _HomePageState extends State<HomePage>
           for (var animation in _list) {
             animation.reverse();
           }
-          // Future.delayed(const Duration(milliseconds: 800))
-          //     .then((value) => animationController.reset());
         });
       }
     });

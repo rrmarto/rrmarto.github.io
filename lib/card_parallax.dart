@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:sensors_plus/sensors_plus.dart';
 
-class CardParallax extends StatefulWidget {
+class PhoneParallax extends StatefulWidget {
   double width, height;
   String image;
-  CardParallax(
+  PhoneParallax(
       {Key? key,
       required this.width,
       required this.height,
       required this.image})
       : super(key: key);
   @override
-  _CardParallaxState createState() => _CardParallaxState();
+  _PhoneParallaxState createState() => _PhoneParallaxState();
 }
 
-class _CardParallaxState extends State<CardParallax> {
+class _PhoneParallaxState extends State<PhoneParallax> {
   double localX = 0;
   double localY = 0;
   bool defaultPosition = true;
@@ -25,36 +24,36 @@ class _CardParallaxState extends State<CardParallax> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    gyroscopeEvents.listen(
-      (GyroscopeEvent event) {
-        if (mounted) {
-          setState(() {
-            _gyroscopeValues = <double>[event.x, event.y, event.z];
-            print(_gyroscopeValues);
-            // if (mounted) setState(() => defaultPosition = false);
-            // if (event.x > 0 && event.y < widget.height) {
-            //   if (event.x < widget.width - 40 && event.y > 0) {
-            //     localX = event.x;
-            //     localY = event.y;
-            //   }
-            // }
-            if (mounted) setState(() => defaultPosition = false);
-            if (event.x > 0 && event.y < widget.height) {
-              if (event.x < widget.width && event.y > 0) {
-                localX = event.x;
-                localY = event.y;
-              }
-            }
-          });
-        }
-      },
-    );
+    // gyroscopeEvents.listen(
+    //   (GyroscopeEvent event) {
+    //     if (mounted) {
+    //       setState(() {
+    //         _gyroscopeValues = <double>[event.x, event.y, event.z];
+    //         print(_gyroscopeValues);
+    //         // if (mounted) setState(() => defaultPosition = false);
+    //         // if (event.x > 0 && event.y < widget.height) {
+    //         //   if (event.x < widget.width - 40 && event.y > 0) {
+    //         //     localX = event.x;
+    //         //     localY = event.y;
+    //         //   }
+    //         // }
+    //         if (mounted) setState(() => defaultPosition = false);
+    //         if (event.x > 0 && event.y < widget.height) {
+    //           if (event.x < widget.width && event.y > 0) {
+    //             localX = event.x;
+    //             localY = event.y;
+    //           }
+    //         }
+    //       });
+    //     }
+    //   },
+    // );
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    double percentageX = (localX / (widget.width - 40)) * 100;
+    double percentageX = (localX / (widget.width)) * 100;
     double percentageY = (localY / widget.height) * 100;
     return Transform(
       transform: Matrix4.identity()
@@ -110,6 +109,7 @@ class _CardParallaxState extends State<CardParallax> {
             defaultPosition = true;
           }),
           onHover: (details) {
+            print("is hovering:" + details.localPosition.dy.toString());
             //? work on this
             // if (details.localPosition.dy >= widget.height - 15 ||
             //     details.localPosition.dy <= 15 ||

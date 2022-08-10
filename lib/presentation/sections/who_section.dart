@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/presentation/widgets/my_habilities_widget.dart';
 import 'package:portfolio/utils/extensions.dart';
@@ -9,6 +10,7 @@ class WhoSection extends StatelessWidget {
   final Color color;
   final SizingInformation dimensions;
   late double width;
+  final PageController _pageViewController = PageController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -121,7 +123,7 @@ class WhoSection extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ).separatedColumn(10),
+                        ).separatedColumn(10).fit(),
                       ),
                     ),
                     Expanded(
@@ -129,39 +131,40 @@ class WhoSection extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                              margin: const EdgeInsets.all(10),
-                              height: height / 4 - 30,
-                              padding: const EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                  // color: Colors.indigoAccent,
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        for (var color in myapps[2].colors)
-                                          color
-                                      ]),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
-                                children: [
-                                  const Center(
-                                    child: Text('Skills & Technologies',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold)),
+                            margin: const EdgeInsets.all(10),
+                            height: height / 4 - 30,
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                                // color: Colors.indigoAccent,
+                                gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      for (var color in myapps[2].colors) color
+                                    ]),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Column(
+                              children: [
+                                const Center(
+                                  child: Text('Skills & Technologies',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                Text(
+                                  myInfo['skills']!,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
                                   ),
-                                  Text(
-                                    myInfo['skills']!,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ],
-                              ).separatedColumn(20)),
+                                ),
+                              ],
+                            ).separatedColumn(20).fit(),
+                          ),
                           Container(
+                            width: double.infinity,
                             margin: const EdgeInsets.all(10),
                             height: height / 4 - 30,
                             padding: const EdgeInsets.all(20),
@@ -184,14 +187,14 @@ class WhoSection extends StatelessWidget {
                                 ),
                                 Text(
                                   myInfo['training']!,
-                                  textAlign: TextAlign.start,
+                                  textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 15,
                                   ),
                                 ),
                               ],
-                            ).separatedColumn(20),
+                            ).separatedColumn(20).fit(),
                           ),
                         ],
                       ),
@@ -262,105 +265,159 @@ class WhoSection extends StatelessWidget {
               ],
             ).fit(),
           ),
+          SizedBox(
+            height: height / 5,
+          ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            // height: height / 2 - 20,
-            child: Column(
+            height: height / 2,
+            child: Stack(
               children: [
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  height: height / 4 - 20,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      // color: Colors.blue,
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [for (var color in myapps[3].colors) color]),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Column(
-                    children: [
-                      const Text('Summary',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold)),
-                      SizedBox(
-                        // width: MediaQuery.of(context).size.width * 0.6,
-                        child: Text(
-                          myInfo['summary']!,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                          ),
-                        ).fit(),
-                      ),
-                    ],
-                  ).separatedColumn(10),
-                ),
-                Container(
-                    margin: const EdgeInsets.all(10),
-                    height: height / 4 - 20,
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        // color: Colors.indigoAccent,
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              for (var color in myapps[2].colors) color
-                            ]),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Column(
-                      children: [
-                        const Center(
-                          child: Text('Skills & Technologies',
+                PageView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  controller: _pageViewController,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      height: height / 2 - 40,
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          // color: Colors.blue,
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                for (var color in myapps[3].colors) color
+                              ]),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                        children: [
+                          const Text('Summary',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold)),
-                        ),
-                        Text(
-                          myInfo['skills']!,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                          ),
-                        ).fit(),
-                      ],
-                    ).separatedColumn(20)),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  height: height / 4 - 20,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [for (var color in myapps[1].colors) color]),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Column(
-                    children: [
-                      const Center(
-                        child: Text('Postgrades',
-                            style: TextStyle(
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.6,
+                            child: Text(
+                              myInfo['summary']!,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                      Text(
-                        myInfo['training']!,
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ).separatedColumn(10).fit(),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      height: height / 2 - 40,
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          // color: Colors.indigoAccent,
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                for (var color in myapps[2].colors) color
+                              ]),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                        children: [
+                          const Center(
+                            child: Text('Skills & Technologies',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.6,
+                            child: Text(
+                              myInfo['skills']!,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ).separatedColumn(20).fit(),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      height: height / 2 - 40,
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                for (var color in myapps[1].colors) color
+                              ]),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                        children: [
+                          const Center(
+                            child: Text('Postgrades',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.6,
+                            child: Text(
+                              myInfo['training']!,
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ).separatedColumn(20).fit(),
+                    )
+                  ],
+                ),
+                Positioned(
+                    bottom: 0,
+                    top: 0,
+                    left: 20,
+                    child: IconButton(
+                        onPressed: () {
+                          if (_pageViewController.page!.toInt() > 0) {
+                            _pageViewController.previousPage(
+                                duration: const Duration(milliseconds: 400),
+                                curve: Curves.ease);
+                          }
+                        },
+                        icon: const Icon(
+                          CupertinoIcons.chevron_left_circle,
+                          size: 50,
                           color: Colors.white,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ],
-                  ).separatedColumn(20),
-                )
+                        ))),
+                Positioned(
+                    bottom: 0,
+                    top: 0,
+                    right: 20,
+                    child: IconButton(
+                        onPressed: () {
+                          if (_pageViewController.page!.toInt() < 2) {
+                            _pageViewController.nextPage(
+                                duration: const Duration(milliseconds: 400),
+                                curve: Curves.ease);
+                          }
+                        },
+                        icon: const Icon(
+                          CupertinoIcons.chevron_right_circle,
+                          size: 50,
+                          color: Colors.white,
+                        ))),
               ],
             ),
           ),
