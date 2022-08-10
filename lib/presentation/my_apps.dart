@@ -62,121 +62,115 @@ class _HomePageState extends State<HomePage>
     final nameStyle = Theme.of(context).textTheme.headline2;
     final descriptionStyle = Theme.of(context).textTheme.headline4;
     return ResponsiveBuilder(builder: (context, sizingInformation) {
-            return Scaffold(
-              key: _scaffoldKey,
-              drawer: MenuSection(
-                dimensions: sizingInformation,
-              ),
-              backgroundColor: Colors.transparent,
-              extendBodyBehindAppBar: true,
-              body: NestedScrollView(
-                headerSliverBuilder: (context, innerBoxIsScrolled) {
-                  return [
-                    const SliverAppBar(
-                      backgroundColor: Colors.black,
-                      elevation: 0,
-                      title: Text("My protfolio"),
-                      floating: true,
-                    )
-                  ];
-                },
-                body: NotificationListener<ScrollNotification>(
-                  onNotification: updateOffsetAccordingToScroll,
-                  child: ScrollConfiguration(
-                    behavior: NoScrollGlow(),
-                    child: MouseRegion(
-                      cursor: inMouseRegion
-                          ? SystemMouseCursors.none
-                          : SystemMouseCursors.basic,
-                      onHover: ((event) {
-                        setState(() {
-                          dx = event.localPosition.dx;
-                          dy = event.localPosition.dy;
-                        });
-                      }),
-                      child: Stack(
-                        children: [
-                          ListView(
-                            children: [
-                              HeaderSection(
-                                  offsetHeader: offsetHeader,
-                                  dimensions: sizingInformation),
-                              WhoSection(
-                                  color: Colors.black,
-                                  dimensions: sizingInformation),
-                              WhatSection(
-                                  color: Colors.black,
-                                  dimensions: sizingInformation),
-                              Stack(
+      return Scaffold(
+        key: _scaffoldKey,
+        drawer: MenuSection(
+          dimensions: sizingInformation,
+        ),
+        backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              // const SliverAppBar(
+              //   backgroundColor: Colors.black,
+              //   elevation: 0,
+              //   title: Text("My protfolio"),
+              //   floating: true,
+              // )
+            ];
+          },
+          body: NotificationListener<ScrollNotification>(
+            onNotification: updateOffsetAccordingToScroll,
+            child: ScrollConfiguration(
+              behavior: NoScrollGlow(),
+              child: MouseRegion(
+                cursor: inMouseRegion
+                    ? SystemMouseCursors.none
+                    : SystemMouseCursors.basic,
+                onHover: ((event) {
+                  setState(() {
+                    dx = event.localPosition.dx;
+                    dy = event.localPosition.dy;
+                  });
+                }),
+                child: Stack(
+                  children: [
+                    ListView(
+                      children: [
+                        HeaderSection(
+                            offsetHeader: offsetHeader,
+                            dimensions: sizingInformation),
+                        WhoSection(
+                            color: Colors.black, dimensions: sizingInformation),
+                        WhatSection(
+                            color: Colors.black, dimensions: sizingInformation),
+                        Stack(
+                          children: <Widget>[
+                            SingleChildScrollView(
+                              child: Column(
                                 children: <Widget>[
-                                  SingleChildScrollView(
-                                    child: Column(
-                                      children: <Widget>[
-                                        for (int i = 0;
-                                            i < myapps.length;
-                                            i++) ...{
-                                          TechnologiesSection(
-                                              index: i + 1,
-                                              colors: myapps[i].colors,
-                                              dimensions: sizingInformation,
-                                              app: myapps[i]),
-                                          AppSection(
-                                              app: myapps[i],
-                                              offset: sectionsOffset[i]!,
-                                              height: height,
-                                              width: width,
-                                              dimensions: sizingInformation,
-                                              isPhone: false),
-                                        },
-                                        WhereSection(
-                                          color: Colors.black,
-                                          dimensions: sizingInformation,
-                                        )
-                                      ],
-                                    ),
+                                  for (int i = 0; i < myapps.length; i++) ...{
+                                    TechnologiesSection(
+                                        index: i + 1,
+                                        colors: myapps[i].colors,
+                                        dimensions: sizingInformation,
+                                        app: myapps[i]),
+                                    AppSection(
+                                        app: myapps[i],
+                                        offset: sectionsOffset[i]!,
+                                        height: height,
+                                        width: width,
+                                        dimensions: sizingInformation,
+                                        isPhone: false),
+                                  },
+                                  WhereSection(
+                                    color: Colors.black,
+                                    dimensions: sizingInformation,
                                   )
                                 ],
                               ),
-                            ],
-                          ),
-                          AnimatedPositioned(
-                            duration: duration,
-                            curve: Curves.decelerate,
-                            top: inMouseRegion ? dy : 40,
-                            left: inMouseRegion ? dx : 40,
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 100),
-                              curve: Curves.ease,
-                              height: inMouseRegion ? 80 : 50,
-                              width: inMouseRegion ? 80 : 50,
-                              child: Center(
-                                child: inMouseRegion
-                                    ? const Icon(
-                                        Icons.key,
-                                        color: Colors.white,
-                                        size: 40,
-                                      )
-                                    : IconButton(
-                                        onPressed: () {
-                                          _scaffoldKey.currentState!
-                                              .openDrawer();
-                                        },
-                                        icon: const Icon(
-                                          Icons.menu,
-                                          color: Colors.white,
-                                        )),
-                              ),
-                            ),
-                          ),
-                        ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    AnimatedPositioned(
+                      duration: duration,
+                      curve: Curves.decelerate,
+                      top: inMouseRegion ? dy : 40,
+                      left: inMouseRegion ? dx : 40,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 100),
+                        curve: Curves.ease,
+                        height: inMouseRegion ? 80 : 50,
+                        width: inMouseRegion ? 80 : 50,
+                        child: Center(
+                          child: inMouseRegion
+                              ? const Icon(
+                                  Icons.key,
+                                  color: Colors.white,
+                                  size: 40,
+                                )
+                              : IconButton(
+                                  onPressed: () {
+                                    _scaffoldKey.currentState!.openDrawer();
+                                  },
+                                  icon: const Icon(
+                                    Icons.menu,
+                                    color: Colors.white,
+                                  )),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
-            );
-          });
-        
+            ),
+          ),
+        ),
+      );
+    });
   }
 
   _transformWidget(String image, int index, {bool fullSize = false}) {
