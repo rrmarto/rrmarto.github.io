@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class PhoneParallax extends StatefulWidget {
-  double width, height;
-  String image;
-  PhoneParallax(
+ final double width, height;
+  final String image;
+ const PhoneParallax(
       {Key? key,
       required this.width,
       required this.height,
@@ -174,7 +174,7 @@ class _PhoneParallaxState extends State<PhoneParallax> {
                     child: Opacity(
                       opacity: 1,
                       child: Image.asset(
-                        'assets/images/${widget.image}',
+                        widget.image,
                         fit: BoxFit.cover,
                       ),
                     ),

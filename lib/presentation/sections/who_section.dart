@@ -101,7 +101,9 @@ class WhoSection extends StatelessWidget {
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 colors: [
-                                  for (var color in myapps[3].colors) color
+                                  for (var color
+                                      in myInfo.apps[3].colors)
+                                    color
                                 ]),
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
@@ -114,7 +116,7 @@ class WhoSection extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.6,
                               child: Text(
-                                myInfo['summary']!,
+                                myInfo.summary,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                   color: Colors.white,
@@ -140,7 +142,9 @@ class WhoSection extends StatelessWidget {
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
-                                      for (var color in myapps[2].colors) color
+                                      for (var color
+                                          in myInfo.apps[2].colors)
+                                        color
                                     ]),
                                 borderRadius: BorderRadius.circular(20)),
                             child: Column(
@@ -153,7 +157,7 @@ class WhoSection extends StatelessWidget {
                                           fontWeight: FontWeight.bold)),
                                 ),
                                 Text(
-                                  myInfo['skills']!,
+                                  myInfo.skills,
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     color: Colors.white,
@@ -173,7 +177,9 @@ class WhoSection extends StatelessWidget {
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
-                                      for (var color in myapps[1].colors) color
+                                      for (var color
+                                          in myInfo.apps[1].colors)
+                                        color
                                     ]),
                                 borderRadius: BorderRadius.circular(20)),
                             child: Column(
@@ -186,7 +192,7 @@ class WhoSection extends StatelessWidget {
                                           fontWeight: FontWeight.bold)),
                                 ),
                                 Text(
-                                  myInfo['training']!,
+                                  myInfo.training,
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     color: Colors.white,
@@ -287,7 +293,9 @@ class WhoSection extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                for (var color in myapps[3].colors) color
+                                for (var color
+                                    in myInfo.apps[3].colors)
+                                  color
                               ]),
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
@@ -300,7 +308,7 @@ class WhoSection extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
                             child: Text(
-                              myInfo['summary']!,
+                              myInfo.summary,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 color: Colors.white,
@@ -321,7 +329,9 @@ class WhoSection extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                for (var color in myapps[2].colors) color
+                                for (var color
+                                    in myInfo.apps[2].colors)
+                                  color
                               ]),
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
@@ -336,7 +346,7 @@ class WhoSection extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
                             child: Text(
-                              myInfo['skills']!,
+                              myInfo.skills,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 color: Colors.white,
@@ -356,7 +366,9 @@ class WhoSection extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                for (var color in myapps[1].colors) color
+                                for (var color
+                                    in myInfo.apps[1].colors)
+                                  color
                               ]),
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
@@ -371,7 +383,7 @@ class WhoSection extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.6,
                             child: Text(
-                              myInfo['training']!,
+                              myInfo.training,
                               textAlign: TextAlign.start,
                               style: const TextStyle(
                                 color: Colors.white,

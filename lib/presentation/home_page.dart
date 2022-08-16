@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage>
         vsync: this, duration: const Duration(milliseconds: 400));
     _rotationValue = Tween<double>(begin: 0, end: -45)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-    for (var i = 0; i < myapps.length; i++) {
+    for (var i = 0; i < myInfo.apps.length; i++) {
       sectionsOffset[i] = 0;
     }
   }
@@ -59,8 +59,6 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    final nameStyle = Theme.of(context).textTheme.headline2;
-    final descriptionStyle = Theme.of(context).textTheme.headline4;
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
         key: _scaffoldKey,
@@ -110,14 +108,16 @@ class _HomePageState extends State<HomePage>
                             SingleChildScrollView(
                               child: Column(
                                 children: <Widget>[
-                                  for (int i = 0; i < myapps.length; i++) ...{
+                                  for (int i = 0;
+                                      i < myInfo.apps.length;
+                                      i++) ...{
                                     TechnologiesSection(
                                         index: i + 1,
-                                        colors: myapps[i].colors,
+                                        colors: myInfo.apps[i].colors,
                                         dimensions: sizingInformation,
-                                        app: myapps[i]),
+                                        app: myInfo.apps[i]),
                                     AppSection(
-                                        app: myapps[i],
+                                        app: myInfo.apps[i],
                                         offset: sectionsOffset[i]!,
                                         height: height,
                                         width: width,
@@ -262,19 +262,14 @@ class _HomePageState extends State<HomePage>
     setState(() {
       offsetHeader = scrollNotification.metrics.pixels;
       offset = scrollNotification.metrics.pixels - height * 2.5;
-      // sectionsOffset[0] = offset;
       // print("Offset: $offset");
-      // print("Offsetheader: $offsetHeader");
       double foo = 2.5;
-      for (var i = 0; i < myapps.length; i++) {
+      for (var i = 0; i < myInfo.apps.length; i++) {
         sectionsOffset[i] = scrollNotification.metrics.pixels - height * foo;
         foo += 2.5;
       }
       offset1 = scrollNotification.metrics.pixels - height * 5;
-      // sectionsOffset[1] = offset1;
       offset2 = scrollNotification.metrics.pixels - height * 7.5;
-      // sectionsOffset[2] = offset2;
-
       if ((offsetHeader > height / 3 && offsetHeader < height)
           // ||offsetHeader > height * 1.5 && offsetHeader < height * 2.5
           ) {
@@ -298,7 +293,6 @@ class _HomePageState extends State<HomePage>
           for (var animation in _list) {
             animation.forward();
           }
-          // animationController.forward();
         });
       } else {
         setState(() {
@@ -322,7 +316,3 @@ class NoScrollGlow extends ScrollBehavior {
     return child;
   }
 }
-
-class My extends ScrollBehavior {}
-
-const kHeroImage = 'assets/images/iphone.png';

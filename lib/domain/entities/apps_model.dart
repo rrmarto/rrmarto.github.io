@@ -9,7 +9,7 @@ class AppsModel {
   late List<String> images;
   late String technologies;
   late List<Color> colors;
-  late List<Color> storeUrls;
+  late List<String> storeUrls;
 
   AppsModel({
     required this.name,

@@ -7,9 +7,7 @@ import 'package:portfolio/utils/utils.dart';
 @immutable
 class MyHabilitiesWidget extends StatelessWidget {
   final double height;
-  const MyHabilitiesWidget(
-      {Key? key, required this.height})
-      : super(key: key);
+  const MyHabilitiesWidget({Key? key, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class MyHabilitiesWidget extends StatelessWidget {
         for (var icon in techIcons)
           Center(
             child: Image.asset(
-              "assets/images/technologies/$icon",
+              icon,
               fit: BoxFit.cover,
               height: 50,
               width: 50,
@@ -183,8 +181,8 @@ class _HabilitesState extends State<Habilites> with TickerProviderStateMixin {
                         color: Colors.yellow,
                         border: Border.all(color: Colors.yellow, width: 20),
                         shape: BoxShape.circle,
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/profile.jpg"),
+                        image: DecorationImage(
+                          image: AssetImage(myInfo.profileImage),
                         ))
                     : BoxDecoration(
                         color: Colors.yellow,

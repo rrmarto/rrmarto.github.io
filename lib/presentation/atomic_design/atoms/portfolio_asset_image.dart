@@ -12,11 +12,11 @@ class PortfolioAssetImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget weincodeImage = Image.asset(
+    Widget portfolioAssetImage = Image.asset(
       path,
       width: widthImage,
       height: widthImage,
     );
-    return weincodeImage;
+    return portfolioAssetImage;
   }
 }

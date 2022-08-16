@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/extensions.dart';
+import 'package:portfolio/presentation/atomic_design/foundations/colors.dart';
 
 class CubeTransform extends StatefulWidget {
   final double size;
@@ -45,13 +45,10 @@ class _CubeTransformState extends State<CubeTransform>
           transparent = 4;
         });
       }
-      if (animation.isCompleted) {
-        _controller.repeat();
-      }
-    });
-    _controller.addListener(() {
-      if (_controller.isCompleted) {
-        // _controller.repeat();
+      if (mounted) {
+        if (animation.isCompleted) {
+          _controller.repeat();
+        }
       }
     });
     size = widget.size;
@@ -65,27 +62,6 @@ class _CubeTransformState extends State<CubeTransform>
 
   @override
   Widget build(BuildContext context) {
-    var _cubeFaceWidget = Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            colors: [
-              Colors.black,
-              HexColor.fromHex("12D8FA"),
-            ]),
-        // border: Border.all(color: Colors.blue, width: 0.5)
-      ),
-      child: const Text(
-        "CV",
-        style: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
-      ),
-      // child: const FlutterLogo(
-      //   size: 200,
-      // ),
-    );
-
     var _topFace = Container(
       height: size,
       width: size,
@@ -100,9 +76,6 @@ class _CubeTransformState extends State<CubeTransform>
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
-      // child: const FlutterLogo(
-      //   size: 200,
-      // ),
     );
     var _bottomFace = Container(
       decoration: const BoxDecoration(
@@ -129,12 +102,7 @@ class _CubeTransformState extends State<CubeTransform>
           //     spreadRadius: 40,
           //     color: HexColor.fromHex("12D8FA").withOpacity(1.0)),
         ],
-
-        // border: Border.all(color: Colors.blue, width: 0.5)
       ),
-      // child: const FlutterLogo(
-      //   size: 200,
-      // ),
     );
     return MouseRegion(
       onEnter: ((event) {
@@ -154,7 +122,6 @@ class _CubeTransformState extends State<CubeTransform>
               return Transform(
                 transform: Matrix4.identity()
                   ..rotateY(animation.value * pi / 180),
-                // ..translate(_controller.value * 10),
                 alignment: Alignment.center,
                 child: SizedBox(
                   height: size,
@@ -179,19 +146,6 @@ class _CubeTransformState extends State<CubeTransform>
                         child: Container(),
                       ),
 
-                      // Transform(
-                      //   transform: Matrix4.identity()..translate(50.0, 50.0, -50.0),
-                      //   child: Container(
-                      //     height: 50,
-                      //     width: 50,
-                      //     decoration: const BoxDecoration(
-                      //         color: HexColor.fromHex("12D8FA"), shape: BoxShape.circle),
-                      //   ),
-                      //   // child: const FlutterLogo(
-                      //   //   size: 200,
-                      //   // ),
-                      // ),
-
                       //cara derecha
                       Transform(
                           transform: Matrix4.identity()
@@ -204,12 +158,7 @@ class _CubeTransformState extends State<CubeTransform>
                       Transform(
                           transform: Matrix4.identity()
                             ..translate(0.0, 0.0, -size / 2),
-                          child: _cubeFace(3)
-                          // child: const FlutterLogo(
-                          //   size: 200,
-                          // ),
-
-                          ),
+                          child: _cubeFace(3)),
 
                       //cara izq
                       Transform(
@@ -245,16 +194,16 @@ class _CubeTransformState extends State<CubeTransform>
             transparent == 1 ||
             (animation.value >= 280 || animation.value == 0) && face == 1
         ? Container(
-            height: size, width: size,
-            decoration: BoxDecoration(
+            height: size,
+            width: size,
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
                     Colors.black,
-                    HexColor.fromHex("12D8FA"),
+                    PortfolioColorsFoundation.secondaryBlueColor,
                   ]),
-              // border: Border.all(color: Colors.blue, width: 0.5)
             ),
             child: Center(
               child: RotatedBox(
@@ -267,9 +216,6 @@ class _CubeTransformState extends State<CubeTransform>
                     ),
                   )),
             ),
-            // child: const FlutterLogo(
-            //   size: 200,
-            // ),
           )
         : SizedBox(
             height: size,

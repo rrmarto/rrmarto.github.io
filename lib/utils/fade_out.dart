@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class FadeOut extends StatefulWidget {
   final Widget child;
   final Duration duration;
@@ -15,13 +16,7 @@ class FadeOut extends StatefulWidget {
       this.controller,
       this.manualTrigger = false,
       this.animate = false})
-      : super(key: key) {
-    if (manualTrigger == true && controller == null) {
-      throw FlutterError('If you want to use manualTrigger:true, \n\n'
-          'Then you must provide the controller property, that is a callback like:\n\n'
-          ' ( controller: AnimationController) => yourController = controller \n\n');
-    }
-  }
+      : super(key: key);
 
   @override
   _FadeOutState createState() => _FadeOutState();

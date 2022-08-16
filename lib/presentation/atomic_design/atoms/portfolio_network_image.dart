@@ -14,11 +14,11 @@ class PortfolioNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget weincodeImage = Image.network(
+    Widget portfolioNetworkImage = Image.network(
       url,
       width: widthImage,
       height: heightImage,
     );
-    return weincodeImage;
+    return portfolioNetworkImage;
   }
 }

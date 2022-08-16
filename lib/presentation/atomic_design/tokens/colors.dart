@@ -8,9 +8,34 @@
 //  ..................................................
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/utils/extensions.dart';
 
 class PortfolioColors {
   PortfolioColors._();
+
+  static const Color primaryBlackColor = Colors.black;
+  static const Color accentYellowColor = Colors.yellow;
+  static const Color secondaryWhiteColor = Colors.white;
+  static const Color secondaryBlueColor = Colors.blue;
+  static const Color secondaryLightGreenColor =
+      Color.fromARGB(255, 205, 255, 231);
+
+  //app dore site colors
+  static Color doreSiteColor1 = HexColor.fromHex("345EA8");
+  static Color doreSiteColor2 = HexColor.fromHex("3B8AC3");
+  static Color doreSiteColor3 = HexColor.fromHex("4AB4DE");
+
+  //app yoel fashion colors
+  static Color yoelFashionColor1 = HexColor.fromHex("9D50BB");
+  static Color yoelFashionColor2 = HexColor.fromHex("9D50BB");
+
+  //app entv usa colors
+  static Color entvUsaColor1 = HexColor.fromHex("5f2c82");
+  static Color entvUsaColor2 = HexColor.fromHex("49a09d");
+
+  //app entv usa colors
+  static Color autoClubColor1 = HexColor.fromHex("1FA2FF");
+  static Color autoClubColor2 = HexColor.fromHex("12D8FA");
 
   static const Color statusDanger01 = Color.fromARGB(255, 255, 138, 80);
   static const Color statusDanger02 = Color.fromARGB(255, 241, 3, 3);

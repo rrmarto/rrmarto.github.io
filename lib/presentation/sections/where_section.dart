@@ -60,7 +60,7 @@ class WhereSection extends StatelessWidget {
                           launchUrl(Uri.parse(contact.url));
                         },
                         child: Image.asset(
-                          "assets/images/contact/${contact.image}",
+                         contact.image,
                           height: getValueForScreenType<double>(
                             context: context,
                             mobile: 30,

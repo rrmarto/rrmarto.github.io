@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/card_parallax.dart';
+import 'package:portfolio/presentation/widgets/phone_parallax.dart';
 import 'package:portfolio/presentation/providers/responsive_breakpoints_provider.dart';
 import 'package:portfolio/utils/enums.dart';
 import 'package:provider/provider.dart';
@@ -19,25 +19,11 @@ class PhoneWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    breakPoint = context.watch<ResponsiveBreakPointsProvider>().breakpoint;
-
     return ScreenTypeLayout(
       mobile: _mobile(),
       tablet: _tablet(),
       desktop: _desktop(),
     );
-  }
-
-  giveChild() {
-    switch (breakPoint) {
-      case BreakPoint.desktop:
-        return _desktop();
-      case BreakPoint.tablet:
-        return _tablet();
-      case BreakPoint.mobile:
-        return _mobile();
-      default:
-    }
   }
 
   SizedBox _mobile() {
@@ -49,7 +35,6 @@ class PhoneWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // clipRRectBig,
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               height: height / 2.5,
@@ -73,7 +58,6 @@ class PhoneWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // clipRRectBig,
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               height: height / 2 + 20,
@@ -97,7 +81,6 @@ class PhoneWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // clipRRectBig,
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               height: height / 2,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/my_apps.dart';
+import 'package:portfolio/presentation/home_page.dart';
 import 'package:portfolio/presentation/providers/responsive_breakpoints_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';

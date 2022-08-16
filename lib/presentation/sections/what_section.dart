@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/presentation/atomic_design/foundations/texts.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -7,7 +8,8 @@ class WhatSection extends StatelessWidget {
   final SizingInformation dimensions;
   const WhatSection({
     Key? key,
-    required this.color, required this.dimensions,
+    required this.color,
+    required this.dimensions,
   }) : super(key: key);
 
   @override
@@ -54,16 +56,16 @@ class WhatSection extends StatelessWidget {
               //         end: Alignment.bottomCenter,
               //         colors: [for (var color in myapps[2].colors) color]),
               //     borderRadius: BorderRadius.circular(20)),
-              child: const Center(
-                child: Text(
-                  """I've create applications for both Android and iOS using Flutter.
-                   Working as a freelancer and working for companies like Newmont and ENTV USA. 
-                   Next I'll show you some of the apps that are published in the stores.
-            """,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: width / 8),
+                child: const Center(
+                  child: Text(
+                    PortfolioTextsFoundation.selectedAppsText,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),

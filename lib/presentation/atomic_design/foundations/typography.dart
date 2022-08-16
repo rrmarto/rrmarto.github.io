@@ -5,8 +5,7 @@ class PortfolioTypographyFoundation {
   PortfolioTypographyFoundation._();
 
   //fonts
-  static const String familyHeadings = PortfolioTypography.familyOpenSans;
-  static const String familyBody = PortfolioTypography.familyRoboto;
+  static const String familyHeadings = PortfolioTypography.familyWays;
 
   //sizes
   static const double fontSizeH1 = PortfolioTypography.sizeXXL;

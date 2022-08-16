@@ -100,8 +100,7 @@ class TechnologiesSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      """Esta aplicación se realizó con el objetivo de controlar los sitemas privados de la empresa. La misma se realizo usando el framework flutter ademas de otras teccnologias""" *
-                          3,
+                      app.description,
                       style: const TextStyle(color: Colors.white),
                     ),
                     Row(

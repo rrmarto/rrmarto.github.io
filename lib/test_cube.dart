@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/cube.dart';
+import 'package:portfolio/presentation/widgets/cube.dart';
 
 class TestCube extends StatefulWidget {
   final double size;

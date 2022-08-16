@@ -7,6 +7,7 @@ import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppSection extends StatelessWidget {
   late double height;
@@ -68,6 +69,7 @@ class AppSection extends StatelessWidget {
                           Center(
                               child: Text(
                             app.name.toUpperCase(),
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -125,35 +127,41 @@ class AppSection extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            """Esta aplicación se realizó con el objetivo de controlar los sitemas privados de la empresa. La misma se realizo usando el framework flutter ademas de otras teccnologias""" *
-                                5,
-                            style: TextStyle(
-                                fontSize: isPhone ? 15 : 15,
-                                color: Colors.white),
+                            app.description,
+                            style: const TextStyle(
+                                fontSize: 18, color: Colors.white),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    color: Colors.blueGrey,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: const Icon(
-                                  Icons.apple,
-                                  color: Colors.white,
-                                  size: 40,
+                              InkWell(
+                                onTap: (() =>
+                                    launchUrl(Uri.parse(app.storeUrls[1]))),
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueGrey,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: const Icon(
+                                    Icons.apple,
+                                    color: Colors.white,
+                                    size: 40,
+                                  ),
                                 ),
                               ),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: const Icon(
-                                  Icons.android,
-                                  color: Colors.white,
-                                  size: 40,
+                              InkWell(
+                                onTap: (() =>
+                                    launchUrl(Uri.parse(app.storeUrls[0]))),
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: const Icon(
+                                    Icons.android,
+                                    color: Colors.white,
+                                    size: 40,
+                                  ),
                                 ),
                               ),
                             ],
