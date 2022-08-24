@@ -43,3 +43,8 @@ final List<ContactModel> contacts = [
       image: PortfolioImagesFoundation.linkedinImage,
       url: PortfolioTextsFoundation.linkedInURL),
 ];
+
+//Routes
+const String firstScreen = '/';
+const String homePage = '/homePage';
+const String settingsRoute = '/menu';

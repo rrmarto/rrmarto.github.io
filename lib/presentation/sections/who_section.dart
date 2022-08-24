@@ -101,9 +101,7 @@ class WhoSection extends StatelessWidget {
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 colors: [
-                                  for (var color
-                                      in myInfo.apps[3].colors)
-                                    color
+                                  for (var color in myInfo.apps[3].colors) color
                                 ]),
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
@@ -142,8 +140,7 @@ class WhoSection extends StatelessWidget {
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
-                                      for (var color
-                                          in myInfo.apps[2].colors)
+                                      for (var color in myInfo.apps[2].colors)
                                         color
                                     ]),
                                 borderRadius: BorderRadius.circular(20)),
@@ -177,8 +174,7 @@ class WhoSection extends StatelessWidget {
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
-                                      for (var color
-                                          in myInfo.apps[1].colors)
+                                      for (var color in myInfo.apps[1].colors)
                                         color
                                     ]),
                                 borderRadius: BorderRadius.circular(20)),
@@ -238,15 +234,10 @@ class WhoSection extends StatelessWidget {
           //   style: descriptionStyle!.copyWith(color: Colors.white),
           // ),
           SizedBox(
-            // color: Colors.black,
-            // height: height / 4,
             width: width - 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // SizedBox(
-                //   width: width,
-                // ),
                 Text(
                   "Wh".toUpperCase(),
                   style: const TextStyle(
@@ -254,12 +245,6 @@ class WhoSection extends StatelessWidget {
                       fontSize: 300,
                       fontWeight: FontWeight.bold),
                 ),
-                // Container(
-                //   height: width / 3,
-                //   width: width / 3,
-                //   decoration: const BoxDecoration(
-                //       shape: BoxShape.circle, color: Colors.yellow),
-                // ),
                 _habilitiesWidget(height),
                 Text(
                   "?".toUpperCase(),
@@ -288,14 +273,11 @@ class WhoSection extends StatelessWidget {
                       height: height / 2 - 40,
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          // color: Colors.blue,
                           gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                for (var color
-                                    in myInfo.apps[3].colors)
-                                  color
+                                for (var color in myInfo.apps[3].colors) color
                               ]),
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
@@ -309,7 +291,7 @@ class WhoSection extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 0.6,
                             child: Text(
                               myInfo.summary,
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.justify,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -324,14 +306,11 @@ class WhoSection extends StatelessWidget {
                       height: height / 2 - 40,
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          // color: Colors.indigoAccent,
                           gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                for (var color
-                                    in myInfo.apps[2].colors)
-                                  color
+                                for (var color in myInfo.apps[2].colors) color
                               ]),
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
@@ -366,9 +345,7 @@ class WhoSection extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                for (var color
-                                    in myInfo.apps[1].colors)
-                                  color
+                                for (var color in myInfo.apps[1].colors) color
                               ]),
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
@@ -410,7 +387,7 @@ class WhoSection extends StatelessWidget {
                         },
                         icon: const Icon(
                           CupertinoIcons.chevron_left_circle,
-                          size: 50,
+                          size: 30,
                           color: Colors.white,
                         ))),
                 Positioned(
@@ -427,20 +404,30 @@ class WhoSection extends StatelessWidget {
                         },
                         icon: const Icon(
                           CupertinoIcons.chevron_right_circle,
-                          size: 50,
+                          size: 30,
                           color: Colors.white,
                         ))),
               ],
             ),
           ),
+          // const SizedBox(
+          //   height: 20,
+          // ),
           // Row(
           //   mainAxisAlignment: MainAxisAlignment.spaceAround,
           //   children: [
           //     for (int i = 0; i < 3; i++)
           //       Container(
-          //         height: height / 4,
-          //         width: MediaQuery.of(context).size.width / 3 - 20,
-          //         decoration: const BoxDecoration(color: Colors.yellow),
+          //         height: 15,
+          //         width: 15,
+          //         decoration: BoxDecoration(
+          //             gradient: LinearGradient(
+          //                 begin: Alignment.topCenter,
+          //                 end: Alignment.bottomCenter,
+          //                 colors: [
+          //                   for (var color in myInfo.apps[1].colors) color
+          //                 ]),
+          //             shape: BoxShape.circle),
           //       )
           //   ],
           // ),

@@ -13,7 +13,7 @@ class PortfolioTexts {
                         """;
 
   static const portfolioSkills =
-      """Flutter | Swift | Android | Java | Spring Boot | Git | Firebase | AWS |
+      """| Flutter | Swift | Android | Java | Spring Boot | Git | Firebase | AWS |
       | Stripe | Twilio | Rest API | GraphQL | Google Maps | MapBox | Docker |
        | Adobe (XD, Ilustrator, Photoshop) |
                           """;
@@ -24,7 +24,7 @@ Android Development,2013, Cuba.
 """;
 
   static const selectedAppsText =
-      """In recent years I have dedicated myself to creating applications for iOS and Android using Flutter, I have worked for important companies such as Newmont and ENTV USA among others. Next I show you some selected apps made with Flutter that can be found in official stores.""";
+      """In the last years I have dedicated myself to creating applications for iOS and Android using Flutter, I have worked for important companies such as Newmont and ENTV USA among others. Next I show you some selected apps that I made with Flutter that can be found in official stores.""";
 
   static const githubURL = "https://github.com/rrmarto";
   static const instagramURL = "https://www.instagram.com/rrmarto/";

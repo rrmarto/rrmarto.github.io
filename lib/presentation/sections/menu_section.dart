@@ -253,7 +253,6 @@ class _MenuSectionState extends State<MenuSection>
         return const SizedBox();
       case Sections.home:
         return  HeaderSection(
-          offsetHeader: 0,
           dimensions: widget.dimensions,
         );
       case Sections.who:

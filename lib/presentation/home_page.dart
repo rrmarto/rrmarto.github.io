@@ -1,5 +1,11 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:portfolio/presentation/providers/offsets_provider.dart';
 import 'package:portfolio/presentation/sections/app_section.dart';
 import 'package:portfolio/presentation/sections/header_section.dart';
 import 'package:portfolio/presentation/sections/menu_section.dart';
@@ -8,8 +14,9 @@ import 'package:portfolio/presentation/sections/what_section.dart';
 import 'package:portfolio/presentation/sections/where_section.dart';
 import 'package:portfolio/presentation/sections/who_section.dart';
 import 'package:portfolio/utils/utils.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:rive/rive.dart' as rive;
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -40,7 +47,9 @@ class _HomePageState extends State<HomePage>
   Map<int, double> sectionsOffset = {};
   List<String> name = "Roberto Marto Ramirez".split("");
   String current = "";
-  var height;
+  late double height;
+  late double width;
+  late BuildContext _context;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -58,14 +67,14 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    width = MediaQuery.of(context).size.width;
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       return Scaffold(
         key: _scaffoldKey,
         drawer: MenuSection(
           dimensions: sizingInformation,
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.black,
         extendBodyBehindAppBar: true,
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -96,41 +105,42 @@ class _HomePageState extends State<HomePage>
                   children: [
                     ListView(
                       children: [
-                        HeaderSection(
-                            offsetHeader: offsetHeader,
-                            dimensions: sizingInformation),
+                        HeaderSection(dimensions: sizingInformation),
                         WhoSection(
                             color: Colors.black, dimensions: sizingInformation),
                         WhatSection(
                             color: Colors.black, dimensions: sizingInformation),
                         Stack(
                           children: <Widget>[
-                            SingleChildScrollView(
-                              child: Column(
-                                children: <Widget>[
-                                  for (int i = 0;
-                                      i < myInfo.apps.length;
-                                      i++) ...{
-                                    TechnologiesSection(
-                                        index: i + 1,
-                                        colors: myInfo.apps[i].colors,
-                                        dimensions: sizingInformation,
-                                        app: myInfo.apps[i]),
-                                    AppSection(
-                                        app: myInfo.apps[i],
-                                        offset: sectionsOffset[i]!,
-                                        height: height,
-                                        width: width,
-                                        dimensions: sizingInformation,
-                                        isPhone: false),
-                                  },
-                                  WhereSection(
-                                    color: Colors.black,
-                                    dimensions: sizingInformation,
-                                  )
-                                ],
-                              ),
-                            )
+                            Consumer<OffsetsProvider>(
+                                builder: (context, model, _) {
+                              return SingleChildScrollView(
+                                child: Column(
+                                  children: <Widget>[
+                                    for (int i = 0;
+                                        i < model.offsets.length;
+                                        i++) ...{
+                                      TechnologiesSection(
+                                          index: i + 1,
+                                          colors: myInfo.apps[i].colors,
+                                          dimensions: sizingInformation,
+                                          app: myInfo.apps[i]),
+                                      AppSection(
+                                          app: myInfo.apps[i],
+                                          offset: model.offsets[i],
+                                          height: height,
+                                          width: width,
+                                          dimensions: sizingInformation,
+                                          isPhone: false),
+                                    },
+                                    WhereSection(
+                                      color: Colors.black,
+                                      dimensions: sizingInformation,
+                                    )
+                                  ],
+                                ),
+                              );
+                            })
                           ],
                         ),
                       ],
@@ -153,11 +163,12 @@ class _HomePageState extends State<HomePage>
                                   size: 40,
                                 )
                               : IconButton(
-                                  onPressed: () {
-                                    _scaffoldKey.currentState!.openDrawer();
+                                  onPressed: () async {
+                                    // _scaffoldKey.currentState!.openDrawer();
+                                    await _downloadCV();
                                   },
                                   icon: const Icon(
-                                    Icons.menu,
+                                    CupertinoIcons.cloud_download,
                                     color: Colors.white,
                                   )),
                         ),
@@ -173,53 +184,13 @@ class _HomePageState extends State<HomePage>
     });
   }
 
-  _transformWidget(String image, int index, {bool fullSize = false}) {
-    print(image);
-    print(_list.length);
-
-    return Positioned(
-      top: (index + 1) * 20 * index + 1,
-      right: (index + 1) * 20,
-      child: SlideInRight(
-        key: Key(index.toString()),
-        controller: (controller) => _list.add(controller),
-        from: fullSize ? 0 : MediaQuery.of(context).size.width,
-        delay: Duration(milliseconds: 200 * index),
-        child: Transform(
-          transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001)
-            // ..rotateX((0.3 * (dy / 50) + -0.3))
-            ..translate((-0.3 * (dx / 5 * (index + 1)) + 0.3),
-                (-0.3 * (dy / 5 * (index + 1)) + 0.3), (-0.3 * (dx / 5) + 0.3)),
-          // ..rotateY((-0.3 * (dx / 50) + 0.3)),
-          alignment: FractionalOffset.center,
-          child: IgnorePointer(
-            ignoring: true,
-            child: AnimatedOpacity(
-              // opacity: offsetHeader < 300 ? 1 : 0,
-              opacity: 1,
-              duration: const Duration(milliseconds: 500),
-              child: SizedBox(
-                  height: 40 * (index + 1),
-                  width: 40 * (index + 1),
-                  child: const rive.RiveAnimation.asset(
-                    'assets/rive/bubble_demo1.riv',
-                  )),
-              // child: image.isNotEmpty
-              //     ? Image.asset(
-              //         "assets/images/$image",
-              //         height:
-              //             fullSize ? MediaQuery.of(context).size.height * 2 : 700,
-              //         width: fullSize
-              //             ? MediaQuery.of(context).size.width
-              //             : MediaQuery.of(context).size.width / 2 - 100,
-              //       )
-              //     : const SizedBox(),
-            ),
-          ),
-        ),
-      ),
-    );
+  _downloadCV() async {
+    ByteData bytes = await rootBundle.load('assets/cv/cv.pdf');
+    Uint8List cvList =
+        bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
+    List<int> cvListInt = cvList.cast<int>();
+    launchUrl(Uri.parse(
+        "data:application/octet-stream;base64,${base64Encode(cvListInt)}"));
   }
 
   _transformWidget2(Widget image, int index, {bool fullSize = false}) {
@@ -259,18 +230,21 @@ class _HomePageState extends State<HomePage>
   }
 
   bool updateOffsetAccordingToScroll(ScrollNotification scrollNotification) {
+    context
+        .read<OffsetsProvider>()
+        .setOffsets(scrollNotification.metrics.pixels, height);
     setState(() {
       offsetHeader = scrollNotification.metrics.pixels;
-      offset = scrollNotification.metrics.pixels - height * 2.5;
+      // offset = scrollNotification.metrics.pixels - height * 2.5;
       // print("Offset: $offset");
-      double foo = 2.5;
-      for (var i = 0; i < myInfo.apps.length; i++) {
-        sectionsOffset[i] = scrollNotification.metrics.pixels - height * foo;
-        foo += 2.5;
-      }
-      offset1 = scrollNotification.metrics.pixels - height * 5;
-      offset2 = scrollNotification.metrics.pixels - height * 7.5;
-      if ((offsetHeader > height / 3 && offsetHeader < height)
+      // double foo = 2.5;
+      // for (var i = 0; i < myInfo.apps.length; i++) {
+      //   sectionsOffset[i] = scrollNotification.metrics.pixels - height * foo;
+      //   foo += 2.5;
+      // }
+      // offset1 = scrollNotification.metrics.pixels - height * 5;
+      // offset2 = scrollNotification.metrics.pixels - height * 7.5;
+      if ((context.read<OffsetsProvider>().mouseRegion)
           // ||offsetHeader > height * 1.5 && offsetHeader < height * 2.5
           ) {
         setState(() {
@@ -288,19 +262,19 @@ class _HomePageState extends State<HomePage>
           inMouseRegion = false;
         });
       }
-      if (offsetHeader < 300) {
-        setState(() {
-          for (var animation in _list) {
-            animation.forward();
-          }
-        });
-      } else {
-        setState(() {
-          for (var animation in _list) {
-            animation.reverse();
-          }
-        });
-      }
+      // if (offsetHeader < 300) {
+      //   setState(() {
+      //     for (var animation in _list) {
+      //       animation.forward();
+      //     }
+      //   });
+      // } else {
+      //   setState(() {
+      //     for (var animation in _list) {
+      //       animation.reverse();
+      //     }
+      //   });
+      // }
     });
     return true;
   }

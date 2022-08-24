@@ -2,7 +2,9 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/presentation/providers/offsets_provider.dart';
 import 'package:portfolio/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 @immutable
 class MyHabilitiesWidget extends StatelessWidget {
@@ -24,42 +26,6 @@ class MyHabilitiesWidget extends StatelessWidget {
               width: 50,
             ),
           )
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 0),
-        //   icon: const Icon(Icons.format_size),
-        // ),
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 1),
-        //   icon: const Icon(Icons.insert_photo),
-        // ),
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 2),
-        //   icon: const Icon(Icons.videocam),
-        // ),
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 0),
-        //   icon: const Icon(Icons.format_size),
-        // ),
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 1),
-        //   icon: const Icon(Icons.insert_photo),
-        // ),
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 2),
-        //   icon: const Icon(Icons.videocam),
-        // ),
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 0),
-        //   icon: const Icon(Icons.format_size),
-        // ),
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 1),
-        //   icon: const Icon(Icons.insert_photo),
-        // ),
-        // ActionButton(
-        //   onPressed: () => _showAction(context, 2),
-        //   icon: const Icon(Icons.videocam),
-        // ),
       ],
     );
   }
@@ -157,21 +123,31 @@ class _HabilitesState extends State<Habilites> with TickerProviderStateMixin {
   }
 
   Widget _tapProfile() {
+    bool mouseRegion = context.read<OffsetsProvider>().mouseRegion;
     return SizedBox(
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: MouseRegion(
             onEnter: ((event) {
-              _toggle();
+              if (mouseRegion) {
+                _toggle();
+              }
             }),
             onExit: (event) {
-              _toggle();
+              if (mouseRegion) {
+                _toggle();
+              }
             },
             child: InkWell(
-              mouseCursor: SystemMouseCursors.none,
+              splashColor: Colors.transparent,
+              mouseCursor: mouseRegion
+                  ? SystemMouseCursors.none
+                  : SystemMouseCursors.basic,
               onTap: () {
-                _toggle();
+                if (mouseRegion) {
+                  _toggle();
+                }
               },
               child: Container(
                 height: widget.height - widget.height / 3 - 20,
