@@ -288,10 +288,10 @@ class WhoSection extends StatelessWidget {
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold)),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.6,
+                            width: MediaQuery.of(context).size.width * 0.7,
                             child: Text(
                               myInfo.summary,
-                              textAlign: TextAlign.justify,
+                              textAlign: TextAlign.center,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,

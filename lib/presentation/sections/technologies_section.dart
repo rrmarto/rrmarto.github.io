@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/domain/entities/apps_model.dart';
+import 'package:portfolio/presentation/widgets/technologies_marquee.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -162,6 +163,42 @@ class TechnologiesSection extends StatelessWidget {
           //   ),
           // ),
           Positioned(
+            top: 0,
+            bottom: 0,
+            left: MediaQuery.of(context).size.height / 3 - 20,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                // Container(
+                //   height: 5,
+                //   width: MediaQuery.of(context).size.width / 2,
+                //   decoration: const BoxDecoration(
+                //       color: Color.fromARGB(255, 214, 255, 235),
+                //       boxShadow: [
+                //         BoxShadow(
+                //             spreadRadius: 5,
+                //             blurRadius: 5,
+                //             color: Colors.greenAccent)
+                //       ]),
+                // ),
+                const Text(
+                  "Technologies Used",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50,
+                    fontFamily: 'Ways',
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - height / 3,
+                  child: TechnologiesMarquee(
+                      index: index,
+                      technologies: app.technologies.toUpperCase()),
+                ),
+              ],
+            ).separatedColumn(40),
+          ),
+          Positioned(
             left: 10,
             bottom: 0, top: 0,
             // bottom: -height / 7,
@@ -169,6 +206,7 @@ class TechnologiesSection extends StatelessWidget {
               child: Container(
                 height: height / 3 - 20,
                 width: height / 3 - 20,
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     // boxShadow: [
                     //   BoxShadow(
@@ -201,46 +239,6 @@ class TechnologiesSection extends StatelessWidget {
           //       "assets/images/download.png",
           //       width: height / 2,
           //     )),
-          Positioned(
-            top: 0,
-            bottom: 0,
-            left: MediaQuery.of(context).size.height / 3 - 20,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // Container(
-                //   height: 5,
-                //   width: MediaQuery.of(context).size.width / 2,
-                //   decoration: const BoxDecoration(
-                //       color: Color.fromARGB(255, 214, 255, 235),
-                //       boxShadow: [
-                //         BoxShadow(
-                //             spreadRadius: 5,
-                //             blurRadius: 5,
-                //             color: Colors.greenAccent)
-                //       ]),
-                // ),
-                const Text(
-                  "Technologies Used",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontFamily: 'Ways',
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width - height / 3,
-                  child: Text(
-                    app.technologies.toUpperCase(),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontFamily: 'Ways',
-                    ).borderPaint(50, Colors.white),
-                  ),
-                ),
-              ],
-            ).separatedColumn(40),
-          ),
         ],
       ),
     );

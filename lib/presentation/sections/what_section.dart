@@ -57,7 +57,12 @@ class WhatSection extends StatelessWidget {
               //         colors: [for (var color in myapps[2].colors) color]),
               //     borderRadius: BorderRadius.circular(20)),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: width / 8),
+                padding: EdgeInsets.symmetric(
+                    horizontal: getValueForScreenType(
+                        context: context,
+                        mobile: 10,
+                        desktop: width / 8,
+                        tablet: width / 8)),
                 child: const Center(
                   child: Text(
                     PortfolioTextsFoundation.selectedAppsText,

@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/presentation/atomic_design/atoms/portfolio_asset_image.dart';
 import 'package:portfolio/presentation/providers/offsets_provider.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:provider/provider.dart';
@@ -18,14 +19,7 @@ class MyHabilitiesWidget extends StatelessWidget {
       height: height,
       children: [
         for (var icon in techIcons)
-          Center(
-            child: Image.asset(
-              icon,
-              fit: BoxFit.cover,
-              height: 50,
-              width: 50,
-            ),
-          )
+          PortfolioAssetImage(path: icon, widthImage: 50)
       ],
     );
   }
@@ -88,6 +82,7 @@ class _HabilitesState extends State<Habilites> with TickerProviderStateMixin {
   @override
   void dispose() {
     _controller.dispose();
+    _rotationController.dispose();
     super.dispose();
   }
 

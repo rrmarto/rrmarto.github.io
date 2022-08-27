@@ -16,6 +16,7 @@ class PortfolioAssetImage extends StatelessWidget {
       path,
       width: widthImage,
       height: widthImage,
+      fit: BoxFit.cover,
     );
     return portfolioAssetImage;
   }

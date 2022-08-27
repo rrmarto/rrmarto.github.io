@@ -162,15 +162,20 @@ class _HomePageState extends State<HomePage>
                                   color: Colors.white,
                                   size: 40,
                                 )
-                              : IconButton(
-                                  onPressed: () async {
-                                    // _scaffoldKey.currentState!.openDrawer();
-                                    await _downloadCV();
-                                  },
-                                  icon: const Icon(
-                                    CupertinoIcons.cloud_download,
-                                    color: Colors.white,
-                                  )),
+                              : Tooltip(
+                                  message: inMouseRegion ? "" : "Download CV",
+                                  child: IconButton(
+                                      onPressed: () async {
+                                        // _scaffoldKey.currentState!.openDrawer();
+                                        // await _downloadCV();
+                                        _downloadFromGithub();
+                                      },
+                                      icon: const Icon(
+                                        CupertinoIcons.cloud_download,
+                                        color: Colors.white,
+                                        size: 40,
+                                      )),
+                                ),
                         ),
                       ),
                     ),
@@ -191,6 +196,11 @@ class _HomePageState extends State<HomePage>
     List<int> cvListInt = cvList.cast<int>();
     launchUrl(Uri.parse(
         "data:application/octet-stream;base64,${base64Encode(cvListInt)}"));
+  }
+
+  _downloadFromGithub() {
+    launchUrl(Uri.parse(
+        "https://github.com/rrmarto/rrmarto.github.io/raw/master/assets/cv/cv.pdf"));
   }
 
   _transformWidget2(Widget image, int index, {bool fullSize = false}) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/test_cube.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -59,25 +58,28 @@ class WhereSection extends StatelessWidget {
                         onTap: () {
                           launchUrl(Uri.parse(contact.url));
                         },
-                        child: Image.asset(
-                         contact.image,
-                          height: getValueForScreenType<double>(
-                            context: context,
-                            mobile: 30,
-                            tablet: 60,
-                            desktop: 60,
+                        child: Tooltip(
+                          message: contact.url,
+                          child: Image.asset(
+                            contact.image,
+                            height: getValueForScreenType<double>(
+                              context: context,
+                              mobile: 30,
+                              tablet: 60,
+                              desktop: 60,
+                            ),
+                            // width: 60,
                           ),
-                          // width: 60,
                         ),
                       ),
-                    Center(
-                        child: TestCube(
-                            size: getValueForScreenType<double>(
-                      context: context,
-                      mobile: 40,
-                      tablet: 40,
-                      desktop: 100,
-                    )))
+                    // Center(
+                    //     child: TestCube(
+                    //         size: getValueForScreenType<double>(
+                    //   context: context,
+                    //   mobile: 40,
+                    //   tablet: 40,
+                    //   desktop: 100,
+                    // )))
                   ],
                 ).shaderOnWidget(const LinearGradient(
                     colors: [Colors.blue, Color.fromARGB(255, 205, 255, 231)])),

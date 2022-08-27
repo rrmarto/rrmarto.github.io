@@ -38,7 +38,7 @@ Android Development,2013, Cuba.
   static const descriptionAppDoreSite =
       """This application was made to manage the services of Newmont Cerro Negro. It is divided into different modules where you can find a complete section to manage exercise routines, monitor your physical activity and follow specific workouts for your physical level. Internal services such as event reservations, transportation services and others can also be managed. Graphql was used due to the great efficiency of data handling and the use of features such as subscriptions to obtain a real-time flow of data. Hive was used for data caching and the app was also integrated with services such as apple health and google fit to collect users' physical activity.""";
   static const technologiesAppDoreSite =
-      """Flutter GraphQL Firebase AppleHealth GoogleFit CI/CD Git""";
+      """GraphQL Firebase AppleHealth GoogleFit CI/CD Git""";
 
 // App Yoel Fashion Boutique;
 

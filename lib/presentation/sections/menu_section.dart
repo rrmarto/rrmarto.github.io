@@ -3,7 +3,7 @@ import 'package:portfolio/presentation/sections/header_section.dart';
 import 'package:portfolio/presentation/sections/what_section.dart';
 import 'package:portfolio/presentation/sections/where_section.dart';
 import 'package:portfolio/presentation/sections/who_section.dart';
-import 'package:portfolio/test_cube.dart';
+import 'package:portfolio/presentation/widgets/test_cube.dart';
 import 'package:portfolio/utils/enums.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/fade_out.dart';
