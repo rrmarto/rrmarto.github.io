@@ -86,16 +86,19 @@ class _HabilitesState extends State<Habilites> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  void _toggle() {
+  void _toggleOpen() {
     setState(() {
-      _open = !_open;
-      if (_open) {
-        _controller.forward();
-        _rotationController.forward();
-      } else {
-        _controller.reverse();
-        _rotationController.reverse();
-      }
+      _open = true;
+      _controller.forward();
+      _rotationController.forward();
+    });
+  }
+
+  void _toggleClose() {
+    setState(() {
+      _open = false;
+      _controller.reverse();
+      _rotationController.reverse();
     });
   }
 
@@ -126,12 +129,12 @@ class _HabilitesState extends State<Habilites> with TickerProviderStateMixin {
           child: MouseRegion(
             onEnter: ((event) {
               if (mouseRegion) {
-                _toggle();
+                _toggleOpen();
               }
             }),
             onExit: (event) {
               if (mouseRegion) {
-                _toggle();
+                _toggleClose();
               }
             },
             child: InkWell(
@@ -141,7 +144,7 @@ class _HabilitesState extends State<Habilites> with TickerProviderStateMixin {
                   : SystemMouseCursors.basic,
               onTap: () {
                 if (mouseRegion) {
-                  _toggle();
+                  _toggleOpen();
                 }
               },
               child: Container(

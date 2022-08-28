@@ -12,6 +12,7 @@ class TechnologiesMarquee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     var technology = Text(
       technologies,
       style: const TextStyle(
@@ -26,7 +27,7 @@ class TechnologiesMarquee extends StatelessWidget {
         Transform.translate(
           offset: Offset(
               ((context.read<OffsetsProvider>().offsetHeader -
-                      (index * 2.5) * MediaQuery.of(context).size.height) /
+                      (index * 2.5) * height) /
                   10),
               0),
           child: technology,
@@ -34,7 +35,7 @@ class TechnologiesMarquee extends StatelessWidget {
         Transform.translate(
           offset: Offset(
               (-(context.read<OffsetsProvider>().offsetHeader -
-                      (index * 2.5) * MediaQuery.of(context).size.height) /
+                      (index * 2.5) * height) /
                   10),
               0),
           child: Text(technologies,

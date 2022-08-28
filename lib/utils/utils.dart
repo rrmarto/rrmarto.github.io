@@ -1,9 +1,15 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:portfolio/core/singleton_profile_info.dart';
 import 'package:portfolio/domain/entities/contact_model.dart';
 import 'package:portfolio/domain/entities/portfolio_info_model.dart';
 import 'package:portfolio/presentation/atomic_design/foundations/images.dart';
 import 'package:portfolio/presentation/atomic_design/foundations/texts.dart';
+import 'package:portfolio/presentation/sections/cv_section.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final PortfolioInfoModel myInfo = ProfileInfo.myinfo.data;
 
@@ -48,3 +54,39 @@ final List<ContactModel> contacts = [
 const String firstScreen = '/';
 const String homePage = '/homePage';
 const String settingsRoute = '/menu';
+
+showPDFPreview(BuildContext context) {
+  AlertDialog alert = const AlertDialog(
+    insetPadding: EdgeInsets.all(0),
+    contentPadding: EdgeInsets.all(0),
+    content: CVSection(),
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+Future<Uint8List> generatePdf(format) async {
+  ByteData bytes = await rootBundle.load('assets/cv/cv.pdf');
+  Uint8List cvList =
+      bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
+  List<int> cvListInt = cvList.cast<int>();
+  return cvList;
+}
+
+downloadCV() async {
+  ByteData bytes = await rootBundle.load('assets/cv/cv.pdf');
+  Uint8List cvList =
+      bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
+  List<int> cvListInt = cvList.cast<int>();
+  launchUrl(Uri.parse(
+      "data:application/octet-stream;base64,${base64Encode(cvListInt)}"));
+}
+
+downloadFromGithub() {
+  launchUrl(Uri.parse(
+      "https://github.com/rrmarto/rrmarto.github.io/raw/master/assets/cv/cv.pdf"));
+}

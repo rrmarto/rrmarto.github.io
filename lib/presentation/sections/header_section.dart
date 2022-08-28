@@ -3,6 +3,7 @@ import 'package:portfolio/presentation/atomic_design/foundations/colors.dart';
 import 'package:portfolio/presentation/atomic_design/foundations/texts.dart';
 import 'package:portfolio/presentation/atomic_design/foundations/typography.dart';
 import 'package:portfolio/presentation/providers/offsets_provider.dart';
+import 'package:portfolio/presentation/widgets/opaque_widget.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:portfolio/utils/zoom_widget_out.dart';
@@ -36,44 +37,46 @@ class _HeaderSectionState extends State<HeaderSection> {
           dy = event.localPosition.dy;
         });
       }),
-      child: SizedBox(
-        height: height,
-        child: Stack(
-          children: [
-            Positioned(
-              top: 40,
-              left: width / 10,
-              right: width / 10,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // _transformWidget2(_nameWidget(width, height), 1),
-                  _nameWidget(width, height),
-                  const SizedBox(
-                    height: 50,
-                    // child: Divider(
-                    //   color: Colors.white,
-                    // ),
-                  ),
-                  _professionWidget(height, width)
-                  // _transformWidget2(_professionWidget(height, width), 3)
-                ],
+      child: OpaqueWidget(
+        child: SizedBox(
+          height: height,
+          child: Stack(
+            children: [
+              Positioned(
+                top: 40,
+                left: width / 10,
+                right: width / 10,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // _transformWidget2(_nameWidget(width, height), 1),
+                    _nameWidget(width, height),
+                    const SizedBox(
+                      height: 50,
+                      // child: Divider(
+                      //   color: Colors.white,
+                      // ),
+                    ),
+                    _professionWidget(height, width)
+                    // _transformWidget2(_professionWidget(height, width), 3)
+                  ],
+                ),
               ),
-            ),
-            Positioned(
-                top: getValueForScreenType<double>(
-                  context: context,
-                  mobile: height / 2.5,
-                  tablet: height / 3,
-                  desktop: 170,
-                ),
-                left: width / 8,
-                child: _portfolioStampWidget(context, width)
-                //  _transformWidget2(
-                //     _portfolioStampWidget(context, width), 2)
-                ),
-          ],
+              Positioned(
+                  top: getValueForScreenType<double>(
+                    context: context,
+                    mobile: height / 2.5,
+                    tablet: height / 3,
+                    desktop: 170,
+                  ),
+                  left: width / 8,
+                  child: _portfolioStampWidget(context, width)
+                  //  _transformWidget2(
+                  //     _portfolioStampWidget(context, width), 2)
+                  ),
+            ],
+          ),
         ),
       ),
     );
