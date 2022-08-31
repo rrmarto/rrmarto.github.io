@@ -22,7 +22,7 @@
 
 This project was created as my personal <a href="https://rrmarto.github.io">portfolio</a> where you can learn more about me, my skills as a programmer, technologies and projects that I have done.<br/>
 
-This project was built using the following packages:
+This project was built with flutter using the following packages:
 
 - <a href="https://pub.dev/packages/provider">Provider</a>
 - <a href="https://pub.dev/packages/responsive_builder">Responsive Builder</a>

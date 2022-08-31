@@ -1,8 +1,5 @@
-import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:portfolio/presentation/providers/offsets_provider.dart';
 import 'package:portfolio/presentation/sections/app_section.dart';
 import 'package:portfolio/presentation/sections/header_section.dart';
@@ -14,7 +11,6 @@ import 'package:portfolio/presentation/sections/who_section.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -119,7 +115,7 @@ class _HomePageState extends State<HomePage>
                       duration: duration,
                       curve: Curves.decelerate,
                       top: inMouseRegion ? dy : 40,
-                      left: inMouseRegion ? dx : 40,
+                      right: inMouseRegion ? (width - dx) : 40,
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 100),
                         curve: Curves.ease,

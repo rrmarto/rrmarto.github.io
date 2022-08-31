@@ -102,6 +102,14 @@ class _HabilitesState extends State<Habilites> with TickerProviderStateMixin {
     });
   }
 
+  void _toggleTap() {
+    if (_open) {
+      _toggleClose();
+    } else {
+      _toggleOpen();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
@@ -144,7 +152,7 @@ class _HabilitesState extends State<Habilites> with TickerProviderStateMixin {
                   : SystemMouseCursors.basic,
               onTap: () {
                 if (mouseRegion) {
-                  _toggleOpen();
+                  _toggleTap();
                 }
               },
               child: Container(

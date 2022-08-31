@@ -1,11 +1,11 @@
 {
-    "name": "portfolio",
-    "short_name": "portfolio",
+    "name": "Roberto Marto | Portfolio",
+    "short_name": "Roberto Marto | Portfolio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Roberto Marto | Portfolio",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
