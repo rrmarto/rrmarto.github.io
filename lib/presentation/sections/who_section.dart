@@ -120,13 +120,13 @@ class WhoSection extends StatelessWidget {
                                       fontWeight: FontWeight.bold)),
                               Stack(
                                 children: [
-                                  Opacity(
-                                    opacity: 0.2,
-                                    child: Image.asset(
-                                      "assets/images/user.png",
-                                      height: 200,
-                                    ),
-                                  ),
+                                  // Opacity(
+                                  //   opacity: 0.2,
+                                  //   child: Image.asset(
+                                  //     "assets/images/user.png",
+                                  //     height: 200,
+                                  //   ),
+                                  // ),
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width * 0.6,
@@ -174,13 +174,13 @@ class WhoSection extends StatelessWidget {
                                   ),
                                   Stack(
                                     children: [
-                                      Opacity(
-                                        opacity: 0.2,
-                                        child: Image.asset(
-                                          "assets/images/swords.png",
-                                          height: 100,
-                                        ),
-                                      ),
+                                      // Opacity(
+                                      //   opacity: 0.2,
+                                      //   child: Image.asset(
+                                      //     "assets/images/swords.png",
+                                      //     height: 100,
+                                      //   ),
+                                      // ),
                                       Text(
                                         myInfo.skills,
                                         textAlign: TextAlign.center,
@@ -219,13 +219,13 @@ class WhoSection extends StatelessWidget {
                                   ),
                                   Stack(
                                     children: [
-                                      Opacity(
-                                        opacity: 0.2,
-                                        child: Image.asset(
-                                          "assets/images/trophy.png",
-                                          height: 100,
-                                        ),
-                                      ),
+                                      // Opacity(
+                                      //   opacity: 0.2,
+                                      //   child: Image.asset(
+                                      //     "assets/images/trophy.png",
+                                      //     height: 100,
+                                      //   ),
+                                      // ),
                                       Text(
                                         myInfo.training,
                                         textAlign: TextAlign.center,
