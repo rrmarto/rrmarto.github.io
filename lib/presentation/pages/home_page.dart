@@ -88,16 +88,15 @@ class _HomePageState extends State<HomePage>
                                         i++) ...{
                                       TechnologiesSection(
                                           index: i + 1,
-                                          colors: myInfo.apps[i].colors,
                                           dimensions: sizingInformation,
                                           app: myInfo.apps[i]),
                                       AppSection(
-                                          app: myInfo.apps[i],
-                                          offset: model.offsets[i],
-                                          height: height,
-                                          width: width,
-                                          dimensions: sizingInformation,
-                                          isPhone: false),
+                                        app: myInfo.apps[i],
+                                        offset: model.offsets[i],
+                                        height: height,
+                                        width: width,
+                                        dimensions: sizingInformation,
+                                      ),
                                     },
                                     WhereSection(
                                       color: Colors.black,

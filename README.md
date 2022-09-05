@@ -42,5 +42,8 @@ This project was built with flutter using the following packages:
 ### Show your support
 
 Give a ⭐ if you like this website!
+    
+<i>TODO: Finish atomic design migration.</br>Fix scroll behaviour in mobile browsers. Ref:https://github.com/flutter/flutter/issues/56257
+</i>      
     </body>
   </html>

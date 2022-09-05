@@ -7,13 +7,11 @@ import 'package:responsive_builder/responsive_builder.dart';
 class TechnologiesSection extends StatelessWidget {
   final AppsModel app;
   final int index;
-  final List<Color> colors;
   final SizingInformation dimensions;
   TechnologiesSection(
       {required this.app,
       Key? key,
       required this.index,
-      required this.colors,
       required this.dimensions})
       : super(key: key);
   late double height;
@@ -217,7 +215,7 @@ class TechnologiesSection extends StatelessWidget {
                     // ],
                     gradient: LinearGradient(
                         // colors: [HexColor.fromHex("12D8FA"), Colors.blueAccent]
-                        colors: [for (var color in colors) color]),
+                        colors: [for (var color in app.colors) color]),
                     shape: BoxShape.circle),
                 child: Center(
                   child: Text(

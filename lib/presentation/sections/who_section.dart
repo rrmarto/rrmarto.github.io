@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/providers/offsets_provider.dart';
 import 'package:portfolio/presentation/widgets/my_habilities_widget.dart';
 import 'package:portfolio/presentation/widgets/opaque_widget.dart';
 import 'package:portfolio/utils/extensions.dart';
 import 'package:portfolio/utils/utils.dart';
-import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class WhoSection extends StatelessWidget {
@@ -120,16 +118,28 @@ class WhoSection extends StatelessWidget {
                                       color: Colors.white,
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold)),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.6,
-                                child: Text(
-                                  myInfo.summary,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
+                              Stack(
+                                children: [
+                                  Opacity(
+                                    opacity: 0.2,
+                                    child: Image.asset(
+                                      "assets/images/user.png",
+                                      height: 200,
+                                    ),
                                   ),
-                                ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    child: Text(
+                                      myInfo.summary,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ).separatedColumn(10).fit(),
@@ -162,13 +172,24 @@ class WhoSection extends StatelessWidget {
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold)),
                                   ),
-                                  Text(
-                                    myInfo.skills,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                    ),
+                                  Stack(
+                                    children: [
+                                      Opacity(
+                                        opacity: 0.2,
+                                        child: Image.asset(
+                                          "assets/images/swords.png",
+                                          height: 100,
+                                        ),
+                                      ),
+                                      Text(
+                                        myInfo.skills,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ).separatedColumn(20).fit(),
@@ -196,13 +217,24 @@ class WhoSection extends StatelessWidget {
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold)),
                                   ),
-                                  Text(
-                                    myInfo.training,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                    ),
+                                  Stack(
+                                    children: [
+                                      Opacity(
+                                        opacity: 0.2,
+                                        child: Image.asset(
+                                          "assets/images/trophy.png",
+                                          height: 100,
+                                        ),
+                                      ),
+                                      Text(
+                                        myInfo.training,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ).separatedColumn(20).fit(),

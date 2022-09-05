@@ -13,7 +13,6 @@ class AppSection extends StatelessWidget {
   late double height;
   late double width;
   late AppsModel app;
-  late bool isPhone;
   final SizingInformation dimensions;
   double offset;
 
@@ -23,7 +22,6 @@ class AppSection extends StatelessWidget {
       required this.offset,
       required this.height,
       required this.width,
-      required this.isPhone,
       required this.dimensions})
       : super(key: key);
 
@@ -70,10 +68,10 @@ class AppSection extends StatelessWidget {
                               child: Text(
                             app.name.toUpperCase(),
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: isPhone ? 40 : 75,
+                              fontSize: 75,
                             ),
                           )),
 
